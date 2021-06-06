@@ -4,107 +4,111 @@
   padding: 0px;
   font-family: "Poppins", sans-serif;
 }
-.nav-bar{
-    display: flex;
-    margin: 0 auto;
-    background-color: #333;
-}
-nav {
-  background-color: #333;
+.logo {
+  width: 20%;
+  height: 100%;
   display: flex;
-    padding: 20px 0px;
-    margin: 0 auto;
+  align-items: center;
 }
-ul {
-  list-style-type: none;
-  margin: auto;
-  padding: 0;
-  overflow: hidden;
+.logo a {
+  height: 100%;
+}
+.logo a img {
+  height: 100%;
+}
+
+/** this is for nav-bar **/
+nav {
+  width: 50%;
+  height: 100%;
+}
+/* .nav-bar {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+}
+.nav-bar {
   text-transform: capitalize;
 }
-
-li {
-  float: left;
-}
-
-li a {
-  display: inline-block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  transition: 200ms ease-in;
-}
-
-li a:hover {
-  color: #1dd1a1;
-  transform: scale(1.2);
-  transition: 300ms ease-in;
-}
-
-#name{
-  color: #f1c40f;
-  font-weight: bolder;
-  transition: 300ms ease-out;
-}
-#name:hover{
-  color: #eee;
-  transition: 300ms ease-in;
-}
-
-
-.logout{
-  color: #fff;
-  cursor: pointer;
-}
-
-.logout a{
+.nav-bar a {
   color: #fff;
   text-decoration: none;
   font-weight: 500;
   transition: 300ms ease-out;
 }
-.logout:hover > * {
-   color: #1dd1a1;
+.nav-bar a:hover {
+  color: #1dd1a1;
+  font-size: 18px;
+  transition: 300ms ease-in;
+} */
+
+.burger {
+  display: none;
+  cursor: pointer;
+}
+.burger div {
+  width: 30px;
+  height: 3px;
+  margin: 5px;
+  background-color: #fff;
+  transition: all 0.5 ease;
+}
+
+#name {
+  color: #f1c40f;
+  font-weight: bolder;
+  transition: 300ms ease-out;
+}
+#name:hover {
+  color: #eee;
+  transition: 300ms ease-in;
+}
+
+.logout a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 300ms ease-out;
+}
+.logout a:hover {
+  color: #1dd1a1;
   font-size: 18px;
   transition: 300ms ease-in;
 }
-.fa-sign-out-alt{
+/* .fa-sign-out-alt {
   transition: 300ms ease-out;
-}
+} */
 
-
-.main{
+.main {
   width: 80%;
   margin-top: 20px;
 }
 
 .hello {
-    background-color: antiquewhite;
-    padding: 10px 20px;
-    text-align: center;
-    font-size: 20px;
-    margin: 40px 0px;
-    height: 100px;
+  background-color: antiquewhite;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 20px;
+  margin: 40px 0px;
+  height: 100px;
 }
 .hello h1 {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
-.header{
+/* .header {
   margin: 0 auto;
   cursor: pointer;
 }
-.header h1{
+.header h1 {
   color: #fff;
 }
-.header h1:hover{
+.header h1:hover {
   color: #1dd1a1;
   transition: 300ms ease-in;
-}
-
+} */
 
 table {
   width: 100%;
@@ -142,161 +146,198 @@ tbody td:hover:before {
 }
 
 form {
-    margin-top: 50px;
-    
-    width: fit-content;
+  margin-top: 50px;
+
+  width: fit-content;
 }
 input {
-    padding: 10px;
+  padding: 10px;
 }
 button {
-    padding: 10px 20px;
-    font-weight: 600;
-  }
-  
-* {
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
-   font-family: 'Open Sans Condensed', sans-serif;
-   font-weight: 700;
-}
- html, body {
-   background: #eee5e9;
-}
- header {
-   width: 95%;
-   display: flex;
-   justify-content: flex-end;
-   flex-flow: row wrap;
-}
- header ul {
-   padding: 1.2em 0 0.5em;
-}
- header span {
-   padding: 0 0 0 0.5em;
-}
- header span, header i {
-   color: #2b2d42;
-}
- header i:nth-of-type(2) {
-   cursor: pointer;
-}
- .row {
-   width: 100%;
-   justify-content: flex-start;
-   display: flex;
-   flex-flow: row wrap;
-}
- .product, .product--blue, .product--orange, .product--red, .product--green, .product--yellow, .product--pink {
-   box-shadow: 1px 5px 15px #ccc;
-   width: 15em;
-   height: auto;
-   border-radius: 3px;
-   padding: 2em;
-   margin: 1em;
-   overflow: hidden;
-   position: relative;
-   flex: auto;
-}
- .product--blue {
-   background: linear-gradient(-45deg, #92dce5 50%, rgba(255, 255, 255, 0.5) 50%);
-}
- .product--orange {
-   background: linear-gradient(-45deg, #ef6f6c 50%, rgba(255, 255, 255, 0.5) 50%);
-}
- .product--red {
-   background: linear-gradient(-45deg, #e84855 50%, rgba(255, 255, 255, 0.5) 50%);
-}
- .product--green {
-   background: linear-gradient(-45deg, #70c1b3 50%, rgba(255, 255, 255, 0.5) 50%);
-}
- .product--yellow {
-   background: linear-gradient(-45deg, #e8db7d 50%, rgba(255, 255, 255, 0.5) 50%);
-}
- .product--pink {
-   background: linear-gradient(-45deg, #ff386d 50%, rgba(255, 255, 255, 0.5) 50%);
-}
- .product img, .product--blue img, .product--orange img, .product--red img, .product--green img, .product--yellow img, .product--pink img {
-   max-width: 100%;
-   height: auto !important;
-   text-align: center;
-}
- .product_inner {
-   display: flex;
-   align-items: center;
-   flex-flow: column wrap;
-}
- .product_inner p {
-   color: rgba(255, 255, 255, 0.9);
-}
- .product_inner button {
-   border: 1px solid rgba(255, 255, 255, 0.5);
-   color: #fff;
-   border-radius: 3px;
-   padding: 1em 3em;
-   margin: 1em 0 0 0;
-   background: none;
-   cursor: pointer;
-   transition: background ease-in 0.25s;
-}
- .product_inner button:hover {
-   background: rgba(255, 255, 255, 1);
-   color: #2b2d42;
-}
- .product_inner button:before {
-   font-family: FontAwesome;
-   content: '\f07A';
-   color: #fff;
-   position: absolute;
-   font-size: 1.5em;
-   margin: 0 -1.5em;
-}
- .product_inner button:hover:before {
-   color: #2b2d42;
-}
- .product_overlay {
-   background: rgba(255, 255, 255, 0.9);
-   width: 100%;
-   height: 100%;
-   position: absolute;
-   top: 0;
-   left: 0;
-   right: 0;
-   transform: translateY(-500px);
-   opacity: 0;
-   display: flex;
-   flex-flow: column wrap;
-   justify-content: center;
-   align-items: center;
-}
- .product_overlay h2 {
-   color: rgba(43, 45, 66, 0.7);
-   font-size: 1.2em;
-   margin: 1em 0;
-}
- .product_overlay i {
-   color: rgba(43, 45, 66, 0.7);
-   font-size: 1.5em;
-}
- 
- .fa-shopping-cart {
-    font-size: 40px;
-    position: absolute;
-    top: 50%;
-    left: 60%;
-    transform: translate(-50%, -50%);
-}
-.shopping-card {
-    margin: 10px auto;
-    text-align: center;
-    background-color: #eee;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    position: relative;
+  padding: 10px 20px;
+  font-weight: 600;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans Condensed", sans-serif;
+  font-weight: 700;
+}
+html,
+body {
+  background: #eee5e9;
+}
+header {
+  width: 95%;
+  display: flex;
+  justify-content: flex-end;
+  flex-flow: row wrap;
+}
+header ul {
+  padding: 1.2em 0 0.5em;
+}
+header span {
+  padding: 0 0 0 0.5em;
+}
+header span,
+header i {
+  color: #2b2d42;
+}
+header i:nth-of-type(2) {
+  cursor: pointer;
+}
+.row {
+  width: 100%;
+  justify-content: flex-start;
+  display: flex;
+  flex-flow: row wrap;
+}
+.product,
+.product--blue,
+.product--orange,
+.product--red,
+.product--green,
+.product--yellow,
+.product--pink {
+  box-shadow: 1px 5px 15px #ccc;
+  width: 15em;
+  height: auto;
+  border-radius: 3px;
+  padding: 2em;
+  margin: 1em;
+  overflow: hidden;
+  position: relative;
+  flex: auto;
+}
+.product--blue {
+  background: linear-gradient(
+    -45deg,
+    #92dce5 50%,
+    rgba(255, 255, 255, 0.5) 50%
+  );
+}
+.product--orange {
+  background: linear-gradient(
+    -45deg,
+    #ef6f6c 50%,
+    rgba(255, 255, 255, 0.5) 50%
+  );
+}
+.product--red {
+  background: linear-gradient(
+    -45deg,
+    #e84855 50%,
+    rgba(255, 255, 255, 0.5) 50%
+  );
+}
+.product--green {
+  background: linear-gradient(
+    -45deg,
+    #70c1b3 50%,
+    rgba(255, 255, 255, 0.5) 50%
+  );
+}
+.product--yellow {
+  background: linear-gradient(
+    -45deg,
+    #e8db7d 50%,
+    rgba(255, 255, 255, 0.5) 50%
+  );
+}
+.product--pink {
+  background: linear-gradient(
+    -45deg,
+    #ff386d 50%,
+    rgba(255, 255, 255, 0.5) 50%
+  );
+}
+.product img,
+.product--blue img,
+.product--orange img,
+.product--red img,
+.product--green img,
+.product--yellow img,
+.product--pink img {
+  max-width: 100%;
+  height: auto !important;
+  text-align: center;
+}
+.product_inner {
+  display: flex;
+  align-items: center;
+  flex-flow: column wrap;
+}
+.product_inner p {
+  color: rgba(255, 255, 255, 0.9);
+}
+.product_inner button {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: #fff;
+  border-radius: 3px;
+  padding: 1em 3em;
+  margin: 1em 0 0 0;
+  background: none;
+  cursor: pointer;
+  transition: background ease-in 0.25s;
+}
+.product_inner button:hover {
+  background: rgba(255, 255, 255, 1);
+  color: #2b2d42;
+}
+.product_inner button:before {
+  font-family: FontAwesome;
+  content: "\f07A";
+  color: #fff;
+  position: absolute;
+  font-size: 1.5em;
+  margin: 0 -1.5em;
+}
+.product_inner button:hover:before {
+  color: #2b2d42;
+}
+.product_overlay {
+  background: rgba(255, 255, 255, 0.9);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateY(-500px);
+  opacity: 0;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+}
+.product_overlay h2 {
+  color: rgba(43, 45, 66, 0.7);
+  font-size: 1.2em;
+  margin: 1em 0;
+}
+.product_overlay i {
+  color: rgba(43, 45, 66, 0.7);
+  font-size: 1.5em;
+}
+
+.fa-shopping-cart {
+  font-size: 40px;
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+}
+.shopping-card {
+  margin: 10px auto;
+  text-align: center;
+  background-color: #eee;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  position: relative;
+}
 
 section {
   background-color: #353b48;
@@ -308,7 +349,6 @@ section {
   font-size: 120px;
   padding: 20px 0px 0px 0px;
 }
-
 
 .card {
   display: flex;
@@ -362,32 +402,32 @@ section {
   cursor: default;
 }
 
-.delete-user{
+.delete-user {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.delete-user button{
+.delete-user button {
   cursor: pointer;
-    background: none;
-    outline: none;
-    border: 2px solid;
-    border-radius: 7px;
-    color: #fff;
-    font-size: 12px;
-    transition: all 300ms ease-out;
+  background: none;
+  outline: none;
+  border: 2px solid;
+  border-radius: 7px;
+  color: #fff;
+  font-size: 12px;
+  transition: all 300ms ease-out;
 }
-button{
+button {
   padding: 7px 10px;
   font-weight: 600;
 }
-.delete-user button:hover{
+.delete-user button:hover {
   background-color: #fff;
   color: #353b48;
   transform: scale(1.1);
   transition: all 300ms ease-in;
 }
-.fa-trash-alt{
+.fa-trash-alt {
   margin-right: 10px;
-    font-size: 15px;
+  font-size: 15px;
 }
