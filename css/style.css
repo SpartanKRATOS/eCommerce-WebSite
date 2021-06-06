@@ -1,14 +1,12 @@
 /* nous avons importé les polices*/
-@import url("//fonts.googleapis.com/css?family=Roboto:500");
-
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 body,
 html {
   padding: 0px;
   margin: 0;
   width: 100%;
-  font-family: poppins;
+  font-family: Montserrat;
   box-sizing: border-box;
 }
 
@@ -82,9 +80,8 @@ nav {
 }
 .nav-bar li a:hover {
   transition: all 300ms ease-in;
-  text-decoration: underline;
   color: #fff;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 800;
 }
 
