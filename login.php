@@ -80,7 +80,7 @@ if(isset($_POST['submit'])){
                         <h3>Sign In</h3>
                         <input type="text" placeholder ="Username" name="username">
                         <input type="password" placeholder ="Password" name="pwd">
-                        <button type="submit" name="submit">Login</button>
+                        <input type="submit" name="submit" value="Login">
                         <a href="#" class="forgot">Forgot Password</a>
                     </form>
                 </div>
