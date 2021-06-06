@@ -58,11 +58,8 @@ include '../inc.php/html_body.php';
         <li><a href="../php/products.php">Products</a></li>
         <li><a href="../php/orders.php">ViewCart</a></li>
         <li><a href="../php/profile.php">My Profile</a></li>
-           
-            
-            
-            <li><i class="fas fa-sign-out-alt"></i><a href="logout.php">Log out</a></li>
-     </ul>
+        <li><i class="fas fa-sign-out-alt"></i><a href="logout.php">Log out</a></li>
+        </ul>
       </div>
 
 
