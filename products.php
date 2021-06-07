@@ -1,11 +1,4 @@
 <?php
-include '../php/functions.php';
-
-// $page = isset($_GET['page']) && file_exists($_GET['page'] . '.php') ? $_GET['page'] : 'home';
-// // Include and show the requested page
-// include $page . '.php';
-
-$pdo = pdo_connect_mysql();
 
 // The amounts of products to show on each page
 $num_products_on_each_page = 4;
@@ -31,8 +24,8 @@ $total_products = $pdo->query('SELECT * FROM products')->rowCount();
     <div class="products-wrapper">
         <?php foreach ($products as $product): ?>
         <!-- changed index.php to products.php -->
-        <a href="../php/product.php?id=<?=$product['id']?>" class="product">
-            <img src="../images/<?=$product['img']?>" width="200" height="200" alt="<?=$product['name']?>">
+        <a href="index.php?page=product&id=<?=$product['id']?>" class="product">
+            <img src="images/<?=$product['img']?>" width="200" height="200" alt="<?=$product['name']?>">
             <span class="name"><?=$product['name']?></span>
             <span class="price">
                 &dollar;<?=$product['price']?>

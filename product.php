@@ -1,5 +1,5 @@
 <?php
-include '../php/functions.php';
+
 // Check to make sure the id parameter is specified in the URL
 if (isset($_GET['id'])) {
     $pdo = pdo_connect_mysql();
@@ -21,7 +21,7 @@ if (isset($_GET['id'])) {
 <?=template_header('Product')?>
 
 <div class="product content-wrapper">
-    <img src="../images/<?=$product['img']?>" width="500" height="500" alt="<?=$product['name']?>">
+    <img src="images/<?=$product['img']?>" width="500" height="500" alt="<?=$product['name']?>">
     <div>
         <h1 class="name"><?=$product['name']?></h1>
         <span class="price">
