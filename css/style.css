@@ -1,5 +1,5 @@
 /* nous avons importé les polices*/
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
 body,
 html {
@@ -170,23 +170,6 @@ label {
 .input:checked + label + .slide {
   transform: translateX(0);
   opacity: 1;
-}
-
-/** this is for background image in the slider **/
-.bg1 {
-  background-image: url("../images/marrakech.jpg");
-  background-position: bottom;
-  background-size: cover;
-}
-.bg2 {
-  background-image: url("../images/chefchaouen.jpg");
-  background-position: bottom;
-  background-size: cover;
-}
-.bg3 {
-  background-image: url("../images/asilah.jpg");
-  background-position: bottom;
-  background-size: cover;
 }
 
 /** becuse i make slider in position absolute to fit full with of page

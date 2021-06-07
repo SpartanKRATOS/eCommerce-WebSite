@@ -41,18 +41,46 @@ include '../inc.php/html_body.php';
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="icon" href="../images/private.png" type="image/png" >
     
+    <link
+      rel="shortcut icon"
+      href="images/icon/icons.jpg"
+      type="image/x-icon"
+    />
+    
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway:600,900"
+      rel="stylesheet"
+    />
 	<!-- nous faisons un titre du prénom de l'utilisateur -->
     <title>Profile of <?php echo $fname ?></title>
   </head>
   <body>
-  <div class="nav-bar">
+  <!-- <div class="nav-bar"> -->
   
-    	<nav>
+  <header>
+          
+          <nav>
+            <div class="burger">
+              <div class="line1"></div>
+              <div class="line2"></div>
+              <div class="line3"></div>
+            </div>
+            <ul class="nav-bar">
+              <li><a href="../index.php">HomePage</a></li>
+              <li><a href="../php/products.php">Products</a></li>
+              <li><a href="../php/orders.php">ViewCart</a></li>
+              <li><a href="../php/profile.php">My Profile</a></li>
+              <li><i class="fas fa-sign-out-alt"></i><a href="logout.php">Log out</a></li>
+            </ul>
+          </nav>
+</header>
+
+    	<!-- <nav>
       <div class="header">
-        <!-- nous imprimons son nom et prénom -->
-     <h1>Welcome to your Store <span id="name"><?php echo $fname . " ". $lname?></span></h1>	
+         nous imprimons son nom et prénom -->
+     <!-- <h1>Welcome to your Store <span id="name"><?php // echo $fname . " ". $lname?></span></h1>	
     	</nav>
-		
+        
         <ul class="logout">
         <li><a href="../index.php">HomePage</a></li>
         <li><a href="../php/products.php">Products</a></li>
@@ -60,7 +88,7 @@ include '../inc.php/html_body.php';
         <li><a href="../php/profile.php">My Profile</a></li>
         <li><i class="fas fa-sign-out-alt"></i><a href="logout.php">Log out</a></li>
         </ul>
-      </div>
+      </div> -->
 
 
     	
@@ -99,8 +127,8 @@ include '../inc.php/html_body.php';
         
       </div>
     </section>
+    <!-- </div> -->
     </div>
-    </div>
-     
+     <script src="../js/slideNav.js"></script>
 </body>
 </html>
