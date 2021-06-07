@@ -114,6 +114,7 @@ echo '
             </div>
             <ul class="nav-bar">
               <li><a href="index.php">HomePage</a></li>
+              <li><a href="php/home.php">Home</a></li>
               <li><a href="php/products.php">Products</a></li>
               <li><a href="php/orders.php">ViewCart</a></li>
               <li><a href="php/profile.php">My Profile</a></li>
