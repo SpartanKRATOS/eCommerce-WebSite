@@ -12,12 +12,12 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-image: linear-gradient(#bdc3c7 , #2c3e50);
+    background: linear-gradient(#bdc3c7 , #2c3e50);
     transition: 0.5s;
 }
 
 body.active{
-    background-image: linear-gradient(#ffd89b , #19547b);
+    background: linear-gradient(#ffd89b , #19547b);
 }
 
 .container{
