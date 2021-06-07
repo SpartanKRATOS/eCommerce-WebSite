@@ -76,7 +76,7 @@ if(isset($_POST['submit'])){
             </div>
             <div class="formBx">
                 <div class="form signinForm">
-                    <form method="POST">
+                    <form method="POST" autocomplete="off">
                         <h3>Sign In</h3>
                         <input type="text" placeholder ="Username" name="username">
                         <input type="password" placeholder ="Password" name="pwd">
@@ -85,7 +85,7 @@ if(isset($_POST['submit'])){
                     </form>
                 </div>
                 <div class="form signupForm">
-                    <form method="POST">
+                    <form method="POST" autocomplete="off">
                         <h3>Sign Up</h3>
                         <input type="text" placeholder ="Username">
                         <input type="text" placeholder ="Email Address">
