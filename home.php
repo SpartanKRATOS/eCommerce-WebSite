@@ -4,7 +4,7 @@ require "php/connexion.php";
 
 session_start();
 
-
+$username = '';
 $sql="SELECT * FROM users";
 	$result=mysqli_query($connect,$sql);
 	$resultCheck = mysqli_num_rows($result);
@@ -16,10 +16,13 @@ $sql="SELECT * FROM users";
 			$username=$sessionName;
 			}
 		}
-		if ($_SESSION[$username] != "ok") { // lorsque nous avons vérifié les noms d'utilisateur et que nous ne trouvons pas de session, cette page redirigera n'importe qui vers la page login.php
-		//header("location: index.php?page=login");
-		//exit();     // in order to not reach the html tags so the page wont load for the user.
-	 }
+    //     if(empty($username)){
+
+    //     }
+	// 	if ($_SESSION[$username] != "ok") { // lorsque nous avons vérifié les noms d'utilisateur et que nous ne trouvons pas de session, cette page redirigera n'importe qui vers la page login.php
+	// 	//header("location: index.php?page=login");
+	// 	//exit();     // in order to not reach the html tags so the page wont load for the user.
+	//  }
 	}
 
 
@@ -45,16 +48,22 @@ $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <a href="index.php?page=products">Products</a>
                     <a href="index.php?page=profile">Profile</a>
                     <?php 
-                    if($_SESSION[$username] == "ok"){
 
+                    if($username==''){ ?>
+                       <a href="index.php?page=login">Login</a> 
+                       <?php
                     }else{
-                      ?>
-                      <a href="index.php?page=login">Login</a>
-                      <?php
-                    }
+
+                    if($_SESSION[$username] == "ok"){
+                        ?>
+                        <a href="index.php?page=logout">Logout</a>
+                        <?php
+                    }else{
+                      
+                    }}
                     ?>
                     
-                    <a href="index.php?page=logout">Logout</a>
+                    
                 </nav>
                 <div class="link-icons">
                     <a href="index.php?page=cart">

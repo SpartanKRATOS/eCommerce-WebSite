@@ -166,8 +166,8 @@ function sub_headers(){
 echo '
 <header class="navbarclr">
           <div class="logo">
-            <a href="index.php"
-              ><img src="../images/roofTopSwordmanMad.png" alt="logo"
+            <a href="index.php?page=Home"
+              ><img src="images/roofTopSwordmanMad.png" alt="logo"
             /></a>
           </div>
           <nav>
@@ -177,11 +177,11 @@ echo '
               <div class="line3"></div>
             </div>
             <ul class="nav-bar">
-              <li><a href="../index.php">HomePage</a></li>
-              <li><a href="../php/products.php">Products</a></li>
-              <li><a href="../php/orders.php">ViewCart</a></li>
-              <li><a href="../php/profile.php">My Profile</a></li>
-              <li><a href="login.php">
+              <li><a href="index.php?page=Home">HomePage</a></li>
+              <li><a href="index.php?page=products">Products</a></li>
+              <li><a href="index.php?page=orders">ViewCart</a></li>
+              <li><a href="index.php?page=profile">My Profile</a></li>
+              <li><a href="index.php?page=login.php">
               <i class="fa fa-user-circle" aria-hidden="true" title="Login to you Account"></i>
               </a></li>
             </ul>
