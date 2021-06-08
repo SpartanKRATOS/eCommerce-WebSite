@@ -1,5 +1,12 @@
 <?php
 
+// session_start();
+
+ if (isset($_SESSION)) { // lorsque nous avons vérifié les noms d'utilisateur et que nous ne trouvons pas de session, cette page redirigera n'importe qui vers la page login.php
+		header("location:index.php?page=profile");
+		exit();     // in order to not reach the html tags so the page wont load for the user.
+	 }
+
 // vérifier si le bouton est enfoncé puis agir
 if(isset($_POST['submit'])){
 
@@ -14,7 +21,7 @@ if(isset($_POST['submit'])){
 	
 	$username = mysqli_real_escape_string($connect,$_POST['username']);
 	$username=trim(strtolower($username));// trim pour supprimer tout espace indésirable au premier et au dernier des mots;
-	$pwd = mysqli_real_escape_string($connect,$_POST['pwd']);
+	$pwd = mysqli_real_escape_string($connect,$_POST['password']);
 	
 	// on vérifie d'abord si les champs sont vides
 	if(empty($username) || empty($pwd) ){
@@ -37,7 +44,7 @@ if(isset($_POST['submit'])){
 				// lorsque le nom d'utilisateur et le mot de passe sont corrects, nous faisons une session prendre le nom du nom d'utilisateur afin de garantir l'unicité du nom de la session 
 				session_start();
 				$_SESSION[$username] = "ok";
-				header("location:php/profile.php");
+				header("location: index.php?page=profile");
 				
 			}else{
 				
@@ -79,7 +86,7 @@ if(isset($_POST['submit'])){
                     <form method="POST" autocomplete="off">
                         <h3>Sign In</h3>
                         <input type="text" placeholder ="Username" name="username">
-                        <input type="password" placeholder ="Password" name="pwd">
+                        <input type="password" placeholder ="Password" name="password">
                         <input type="submit" name="submit" value="Login">
                         <a href="#" class="forgot">Forgot Password</a>
                     </form>

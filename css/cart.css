@@ -16,7 +16,7 @@ body {
   color: #555555;
   background-color: #ffffff;
   margin: 0;
-  padding-bottom: 100px; /* Same height as footer */
+  padding-bottom: 0px; /* Same height as footer */
 }
 h1,
 h2,
@@ -350,10 +350,253 @@ main .placeorder h1 {
 main .placeorder p {
   text-align: center;
 }
-footer {
+/* footer {
   position: absolute;
   bottom: 0;
   border-top: 1px solid #eeeeee;
   padding: 20px 0;
   width: 100%;
+} */
+
+footer {
+  width: 100%;
+  background-color: #2d2d2d;
+}
+.footer-content {
+  width: 80%;
+  margin: 0 auto;
+  color: #fff;
+  background-color: #2d2d2d;
+  margin-top: 120px;
+}
+footer h4 {
+  text-align: center;
+  text-decoration: overline;
+  letter-spacing: 1px;
+  word-spacing: 5px;
+}
+.main-footer {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+#contact {
+  width: 40%;
+  overflow: hidden;
+}
+#contact a {
+  display: block;
+  text-decoration: none;
+  color: #1dd1a1;
+  font-weight: 600;
+}
+#contact a:hover {
+  text-decoration: underline;
+  color: #41f3c3;
+}
+
+.contact-section {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin: 20px 0;
+}
+.contact-section p {
+  width: 80px;
+}
+
+#about {
+  width: 40%;
+  text-align: justify;
+}
+.about-img-frame {
+  text-align: center;
+}
+.about-img-frame img {
+  width: 70%;
+  cursor: pointer;
+}
+#about p {
+  padding: 10px;
+}
+.seperator {
+  width: 2px;
+  background-color: #fff;
+  opacity: 0.5;
+}
+.footer-bar {
+  width: 100%;
+  text-align: center;
+  background-color: #1f1f1f;
+  padding: 15px 0px;
+  color: #fff;
+}
+.first-word {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+th,
+td {
+  padding: 15px;
+  background-color: rgba(42, 234, 183, 0.2);
+  color: #303030;
+}
+th {
+  text-align: left;
+}
+thead th {
+  background-color: #1dd1a1;
+}
+tbody tr:hover {
+  background-color: rgba(68, 68, 68, 0.3);
+}
+tbody td {
+  position: relative;
+}
+tbody td:hover:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -9999px;
+  bottom: -9999px;
+  background-color: rgba(68, 68, 68, 0.2);
+  z-index: -1;
+}
+
+form {
+  margin-top: 50px;
+
+  width: fit-content;
+}
+input {
+  padding: 10px;
+}
+button {
+  padding: 10px 20px;
+  font-weight: 600;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans Condensed", sans-serif;
+  font-weight: 700;
+}
+
+.row {
+  width: 100%;
+  justify-content: flex-start;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+section {
+  background-color: #353b48;
+  color: #fff;
+}
+
+.profil-img {
+  text-align: center;
+  font-size: 120px;
+  padding: 20px 0px 0px 0px;
+}
+
+.card {
+  display: flex;
+  width: fit-content;
+  margin: 0 auto;
+  font-family: poppins;
+  padding: 20px 0px 40px 0px;
+}
+
+.th h1 {
+  font-weight: 600;
+  color: #1dd1a1;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.th {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  padding: 15px;
+}
+.th1 {
+  border: 1px solid;
+  height: 50px;
+  line-height: 50px;
+}
+.th2 {
+  border: 1px solid;
+  height: 50px;
+  line-height: 50px;
+}
+.th3 {
+  border: 1px solid;
+  height: 50px;
+  line-height: 50px;
+}
+.th4 {
+  border: 1px solid;
+  height: 50px;
+  line-height: 50px;
+}
+.th5 {
+  border: 1px solid;
+  height: 50px;
+  line-height: 50px;
+}
+.thead h1 {
+  color: #fff;
+  margin-right: 20px;
+  cursor: default;
+}
+
+.delete-user {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.delete-user button {
+  cursor: pointer;
+  background: none;
+  outline: none;
+  border: 2px solid;
+  border-radius: 7px;
+  color: #fff;
+  font-size: 12px;
+  transition: all 300ms ease-out;
+}
+
+button {
+  padding: 7px 10px;
+  font-weight: 600;
+}
+
+.delete-user button:hover {
+  background-color: #fff;
+  color: #353b48;
+  transform: scale(1.1);
+  transition: all 300ms ease-in;
+}
+button h3 {
+  color: #fff;
+}
+button h3:hover {
+  color: #353b48;
+}
+.fa-trash-alt {
+  margin-right: 10px;
+  font-size: 15px;
 }
