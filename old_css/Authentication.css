@@ -32,13 +32,13 @@ body{
 .container{
     position: relative;
     width: 800px;
-    height: 500px;
+    height: 580px;
     margin: 20px;
 }
 
 .blueBg{
     position:absolute;
-    top:40px;
+    top:80px;
     width: 100%;
     height: 420px;
     background: rgba(255,255,255,0.2);
