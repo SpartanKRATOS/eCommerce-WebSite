@@ -1,9 +1,7 @@
 <?php
 
-session_start();
-
 // Include functions and connect to the database using PDO MySQL
-include 'php/functions.php';
+include 'functions.php';
 $pdo = pdo_connect_mysql();
 // Get the 4 most recently added products
 

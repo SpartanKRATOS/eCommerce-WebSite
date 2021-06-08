@@ -1,5 +1,9 @@
 <?php
 
+// session_start();
+
+ 
+
 // vérifier si le bouton est enfoncé puis agir
 if(isset($_POST['submit'])){
 
@@ -14,7 +18,7 @@ if(isset($_POST['submit'])){
 	
 	$username = mysqli_real_escape_string($connect,$_POST['username']);
 	$username=trim(strtolower($username));// trim pour supprimer tout espace indésirable au premier et au dernier des mots;
-	$pwd = mysqli_real_escape_string($connect,$_POST['pwd']);
+	$pwd = mysqli_real_escape_string($connect,$_POST['password']);
 	
 	// on vérifie d'abord si les champs sont vides
 	if(empty($username) || empty($pwd) ){
@@ -37,7 +41,7 @@ if(isset($_POST['submit'])){
 				// lorsque le nom d'utilisateur et le mot de passe sont corrects, nous faisons une session prendre le nom du nom d'utilisateur afin de garantir l'unicité du nom de la session 
 				session_start();
 				$_SESSION[$username] = "ok";
-				header("location:php/profile.php");
+				header("location: php/profile.php");
 				
 			}else{
 				
@@ -91,21 +95,19 @@ if(isset($_POST['register'])){
 }
 ?>
 
-<?php
+ <?php
 include 'inc.php/html_body.php';
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta name="viewport" content="width=device-width , initial-scale=1.0">
-
         <title>Login</title>
-        <link rel="stylesheet" href="css/header.css">
-        <link rel="stylesheet" type="text/css" href="css/Authentication.css">
-        <link rel="stylesheet" type="text/css" href="css/ftr.css">
+        <link rel="stylesheet" href="header.css">
+        <link rel="stylesheet" type="text/css" href="Authentication.css">
+        <link rel="stylesheet" type="text/css" href="ftr.css">
         <script src="https://kit.fontawesome.com/e1af7c97bd.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap'" rel="stylesheet"/>
-        
     </head>
     <body>
     <?php sub_headers(); ?>
@@ -131,7 +133,7 @@ include 'inc.php/html_body.php';
                             <div class="underline"></div>
                         </div>
                         <div class="form-row">
-                            <input class="inp" id="passwd" type="password" required placeholder="Enter your Password" name="pwd">
+                            <input class="inp" id="passwd" type="password" required placeholder="Enter your Password" name="password">
                             <label class="placehold" for="passwd">Enter your <b>Password</b> <small></small></label>
                             <div class="underline"></div>
                         </div>
@@ -196,9 +198,6 @@ include 'inc.php/html_body.php';
             }
         </script>
     </body>
-
-
- <?php sub_footer(); ?>
+    <?php sub_footer(); ?>
 
 </html>
-
