@@ -53,16 +53,27 @@ if(isset($_POST['submit'])){
 	// nous avons fermé la connexion à DB
 	mysqli_close($connect);
 }
- 
- ?>
+?>
+
+<?php
+include 'inc.php/html_body.php';
+?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta name="viewport" content="width=device-width , initial-scale=1.0">
+
         <title>Login</title>
+        <link rel="stylesheet" href="css/header.css">
         <link rel="stylesheet" type="text/css" href="css/Authentication.css">
+        <link rel="stylesheet" type="text/css" href="css/ftr.css">
+        <script src="https://kit.fontawesome.com/e1af7c97bd.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap'" rel="stylesheet"/>
+        
     </head>
     <body>
+    <?php sub_headers(); ?>
+    <div class="all">
         <div class="container">
             <div class="blueBg">
                 <div class="box signin">
@@ -78,8 +89,17 @@ if(isset($_POST['submit'])){
                 <div class="form signinForm">
                     <form method="POST" autocomplete="off">
                         <h3>Sign In</h3>
-                        <input type="text" placeholder ="Username" name="username">
-                        <input type="password" placeholder ="Password" name="pwd">
+                        <div class="form-row">
+                            <input class="inp" id="usernme" type="text" required placeholder="Enter your username" name="username">
+                            <label class="placehold" for="usernme">Enter your <b>Username</b> <small></small></label>
+                            <div class="underline"></div>
+                        </div>
+                        <div class="form-row">
+                            <input class="inp" id="passwd" type="password" required placeholder="Enter your Password" name="pwd">
+                            <label class="placehold" for="passwd">Enter your <b>Password</b> <small></small></label>
+                            <div class="underline"></div>
+                        </div>
+                        </br>
                         <input type="submit" name="submit" value="Login">
                         <a href="#" class="forgot">Forgot Password</a>
                     </form>
@@ -87,20 +107,38 @@ if(isset($_POST['submit'])){
                 <div class="form signupForm">
                     <form method="POST" autocomplete="off">
                         <h3>Sign Up</h3>
-                        <input type="text" placeholder ="Username">
-                        <input type="text" placeholder ="Email Address">
-                        <input type="password" placeholder ="Password">
-                        <input type="password" placeholder ="Confirm Password">
+                        <div class="form-row">
+                            <input class="inp" id="username" type="text" required placeholder="Enter your username">
+                            <label class="placehold" for="username">Enter your <b>Username</b> <small></small></label>
+                            <div class="underline"></div>
+                        </div>
+                        <div class="form-row">
+                            <input class="inp" id="email" type="text" required placeholder="Enter your Email Address">
+                            <label class="placehold" for="email">Enter your <b>Email Address</b> <small></small></label>
+                            <div class="underline"></div>
+                        </div>
+                        <div class="form-row">
+                            <input class="inp" id="password" type="password" required placeholder="Enter your Password">
+                            <label class="placehold" for="password">Enter your <b>Password</b> <small></small></label>
+                            <div class="underline"></div>
+                        </div>
+                        <div class="form-row">
+                            <input class="inp" id="conf" type="password" required placeholder="Confirm your Password">
+                            <label class="placehold" for="conf">Confirm your <b>Password</b> <small></small></label>
+                            <div class="underline"></div>
+                        </div>
+                            </br>
                         <input type="submit" value="Register">
                     </form>
                 </div>
             </div>
         </div>
+    </div>
         <script>
             const signinBtn = document.querySelector('.signinBtn');
             const signupBtn = document.querySelector('.signupBtn');
             const formBx = document.querySelector('.formBx');
-            const body = document.querySelector('body');
+            const body = document.querySelector('.all');
 
             signupBtn.onclick = function(){
                 formBx.classList.add('active');
@@ -112,4 +150,9 @@ if(isset($_POST['submit'])){
             }
         </script>
     </body>
+
+
+ <?php sub_footer(); ?>
+
 </html>
+
