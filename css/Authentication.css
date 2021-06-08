@@ -8,18 +8,27 @@
 }
 
 body{
-    display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-image: linear-gradient(#bdc3c7 , #2c3e50);
     transition: 0.5s;
 }
 
-body.active{
-    background-image: linear-gradient(#ffd89b , #19547b);
-}
+.all {
+    background: linear-gradient(#bdc3c7 , #2c3e50);
+    position: relative;
+    width: 100%;
+    height: 700px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    transition: 0.5s;
+  }
 
+.all.active{
+    background: linear-gradient(#ffd89b , #19547b);
+
+}
 .container{
     position: relative;
     width: 800px;
@@ -123,14 +132,56 @@ body.active{
     margin-bottom: 20px;
     font-weight: 500;
 }
-
+.formBx .form form .input-data{
+    height: 40px;
+    position: relative;
+}
 .formBx .form form input{
     width: 100%;
     margin-bottom: 20px;
     padding:10px;
     outline: none;
     font-size: 16px;
-    border: 1px solid #333;
+    border: none;
+    border-bottom: 1px solid #2c3e50;
+}
+
+.formBx .form form label{
+position: absolute;
+bottom: 10px;
+left: 0;
+color: grey;
+pointer-events: none;
+transition:all 0.3s ease;
+}
+
+.form-row .underline{
+    position: absolute;
+    bottom: 0px;
+    height:2px;
+    width: 100%;
+    background: grey;
+}
+.form-row .underline::before{
+    position: absolute;
+    content: "";
+    bottom: 0px;
+    height:100%;
+    width: 100%;
+    background: #2c3e50;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+.form-row input:focus ~ .underline::before,
+.form-row input:valid ~ .underline::before{
+    transform: scaleX(1);
+}
+
+.form-row input:focus ~ label,
+.form-row input:valid ~ label{
+    transform: translateY(-20px);
+    font-size: 15px;
+    color: #2c3e50;
 }
 .formBx .form form input[type="submit"]{
     background: #2c3e50;
@@ -200,3 +251,86 @@ body.active{
         top: 150px;
     }
 }
+
+  
+  /** this is for the content width of the page **/
+  .full-page {
+    width: 70%;
+    margin: 0 auto;
+  }
+  .form-row {
+    height: 40px;
+    display: flex;
+    position: relative;
+    margin: 20px 0 10px;
+  }
+  .inp {
+    width: 100%;
+    flex: 1 0 100%;
+    height: 40px;
+    line-height: 20px;
+    font-size: 1rem;
+    padding: 0 10px;
+  }
+  .placehold {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 0 11px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 1rem;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+  }
+  .placehold b {
+    color: #19547b;
+  }
+  .inp:focus + .placehold,
+  .inp:valid + .placehold {
+    transform: translateY(-95%);
+  }
+  .inp:placeholder {
+    visibility: hidden;
+  }
+  
+  .inp::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: transparent;
+  }
+  .inp::-moz-placeholder {
+    /* Firefox 19+ */
+    color: transparent;
+  }
+  .inp:-ms-input-placeholder {
+    /* IE 10+ */
+    color: transparent;
+  }
+  .inp:-moz-placeholder {
+    /* Firefox 18- */
+    color: transparent;
+  }
+  .inp:placeholder {
+    /* No spec for this yet!! */
+    color: transparent;
+  }
+  .inp:not(:placeholder-shown) + .placehold {
+    transform: translateY(-95%);
+  }
+  .inp:invalid:not(:placeholder-shown) + .placehold b:after {
+    content: " - Error";
+    color: red;
+    font-weight: bold;
+  }
+  
+  /* code for optional input*/
+  .inp.optional:placeholder-shown + .placehold {
+    transform: translateY(0%);
+  }
+  .inp.optional:not(:placeholder-shown) + .placehold {
+    transform: translateY(-95%);
+  }
+  .inp.optional:focus + .placehold {
+    transform: translateY(-95%);
+  }
+  
