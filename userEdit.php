@@ -20,7 +20,7 @@ if (isset($_POST['user_update_btn'])) {
         $edit_img = $_FILES["uploadedfile"]["name"];
     }
 
-    $query = " UPDATE users SET `fname`='$edit_firstname', `lname`='$edit_lastname', `login`='$edit_login', `password`='$edit_password', `type`='$edit_type', `img`='$edit_img', `date`=current_timestamp() WHERE `id`='$edit_id'";
+    $query = " UPDATE users SET `fname`='$edit_firstname', `lname`='$edit_lastname', `login`='$edit_login', `password`='$edit_password', `type`='$edit_type', `imag`='$edit_img', `date`=current_timestamp() WHERE `id`='$edit_id'";
     $query_run = mysqli_query($connect, $query);
 
     if ($query_run) {
@@ -41,6 +41,7 @@ if (isset($_POST['user_update_btn'])) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    
 </head>
 
 <body>
@@ -125,8 +126,8 @@ if (isset($_POST['user_update_btn'])) {
                             <input type="text" name="type" class="form-control" placeholder="Type a type" value="<?php echo $row['type'] ?>">
                         </div>
 
-                        <a href="index.php?page=crudUsers" class="btn btn-danger"> Cancel</a>
-                        <button type="submit" name="user_update_btn" class="btn btn-primary">Update</button>
+                        <a href="index.php?page=crudUsers" style=" border-radius:3.25em;"class="btn btn-danger"> Cancel</a>
+                        <button type="submit" style=" border-radius:3.25em;" name="user_update_btn" class="btn btn-primary">Update</button>
 
                     </form>
 

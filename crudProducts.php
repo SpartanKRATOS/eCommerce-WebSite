@@ -82,6 +82,9 @@ if (isset($_POST['delete_data_btn'])) {
 // //Get the amount of items in the shopping cart, this will be displayed in the header
 // $num_items_in_cart = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
 ?>
+ <?php
+include 'inc.php/html_body.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -89,7 +92,11 @@ if (isset($_POST['delete_data_btn'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="old_css/all.css">
+    <script src="https://kit.fontawesome.com/e1af7c97bd.js" crossorigin="anonymous"></script>
 
+    <link rel="stylesheet" type="text/css" href="crud.css">
+    <link rel="stylesheet" type="text/css" href="ftr.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 
@@ -128,12 +135,13 @@ if (isset($_POST['delete_data_btn'])) {
 
 
     <!-- Modal -->
+    <div class="wrapping">
     <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Add Product</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" style=" border-radius:3.25em;" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="row justify-content-center">
@@ -164,28 +172,28 @@ if (isset($_POST['delete_data_btn'])) {
                                 <input type="file" name="uploadfile" id="uploadfile" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary" name="submit">Save</button>
+                                <button type="submit" style=" border-radius:3.25em;"class="btn btn-primary" name="submit">Save</button>
                             </div>
                         </form>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" style=" border-radius:3.25em;" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
                 </div>
             </div>
         </div>
     </div>
 
-
-    <div style="margin-left: 10%;" class="btn-group" role="group" aria-label="Basic example"><button type="button" id="Modal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productModal">
+                </br>
+    <div style="margin-left: 9%;" class="btn-group" role="group" aria-label="Basic example"><button type="button" id="Modal" style=" border-radius:3.25em;" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productModal">
             ADD
         </button></div>
     <div class="row justify-content-center">
         <!-- Button trigger modal -->
 
         <table class="table" style="width: 80%;">
-            <thead>
+            <thead class="thead">
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
@@ -221,13 +229,13 @@ if (isset($_POST['delete_data_btn'])) {
                             <td>
                                 <form action="index.php?page=productEdit" method="POST">
                                     <input type="hidden" name="edit_id" value="<?php echo $row['id'] ?>">
-                                    <button type="submit" class="btn btn-success" name="edit_data_btn"> Edit </button>
+                                    <button type="submit" style=" border-radius:3.25em;" class="btn btn-success" name="edit_data_btn"> Edit </button>
                                 </form>
                             </td>
                             <td>
                                 <form method="POST">
                                     <input type="hidden" name="delete_id" value="<?php echo $row['id'] ?>">
-                                    <button type="submit" class="btn btn-danger" name="delete_data_btn" onclick=" return confirm('Are you sure?');"> Delete </button>
+                                    <button type="submit" style=" border-radius:3.25em;" class="btn btn-danger" name="delete_data_btn" onclick=" return confirm('Are you sure?');"> Delete </button>
                                 </form>
                             </td>
                         </tr>
@@ -250,6 +258,7 @@ if (isset($_POST['delete_data_btn'])) {
             myInput.focus()
         })
     </script>
+    </div>
 </body>
-
+<?php sub_footer(); ?>
 </html>

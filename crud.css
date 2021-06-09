@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+*{
+    font-family: Montserrat;
+}
+.wrapping{
+    background-color: rgb(10, 10, 10);
+    
+}
+tr th{
+    color: white;
+}
+tr td{
+    color: white;
+}
+.table{
+    background-color: rgb(29, 28, 28);
+    border-radius: 20px;
+    
+}
+ .thead{
+    background-color: rgb(73, 71, 71);
+
+}
+div.modal-content{
+    background-color: rgb(29, 28, 28);
+}
+input.form-control{
+    background-color: rgb(29, 28, 28);
+    border-radius: 2.25em;
+}
+input.form-control:focus{
+    background-color: rgb(29, 28, 28);
+}
+.form-group label{
+    color:lightgrey;
+}
+h5{
+    color: white;
+}
