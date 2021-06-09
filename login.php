@@ -41,7 +41,7 @@ if(isset($_POST['submit'])){
 				// lorsque le nom d'utilisateur et le mot de passe sont corrects, nous faisons une session prendre le nom du nom d'utilisateur afin de garantir l'unicité du nom de la session 
 				session_start();
 				$_SESSION[$username] = "ok";
-				header("location: php/profile.php");
+				header("location: index.php?page=profile");
 				
 			}else{
 				
