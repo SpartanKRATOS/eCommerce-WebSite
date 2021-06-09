@@ -34,6 +34,23 @@ if (isset($_POST["submit"])) {
 ?>
 
 <?php
+require "php/connexion.php";
+
+if (isset($_POST['delete_data_btn'])) {
+
+    $delete_id = $_POST["delete_id"];
+    $query = " DELETE FROM `products` WHERE `id`='$delete_id'";
+    $query_run = mysqli_query($connect, $query);
+
+
+    if ($query_run) {
+        header('Location: index.php?page=crudProducts');
+    }
+}
+
+?>
+
+<?php
 
 // session_start();
 
@@ -207,7 +224,12 @@ if (isset($_POST["submit"])) {
                                     <button type="submit" class="btn btn-success" name="edit_data_btn"> Edit </button>
                                 </form>
                             </td>
-                            <td> <a href="#" class="btn btn-danger"> Delete </a> </td>
+                            <td>
+                                <form method="POST">
+                                    <input type="hidden" name="delete_id" value="<?php echo $row['id'] ?>">
+                                    <button type="submit" class="btn btn-danger" name="delete_data_btn" onclick=" return confirm('Are you sure?');"> Delete </button>
+                                </form>
+                            </td>
                         </tr>
                 <?php
 
