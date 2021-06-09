@@ -103,6 +103,8 @@ include 'inc.php/html_body.php';
     <head>
         <meta name="viewport" content="width=device-width , initial-scale=1.0">
         <title>Login</title>
+        
+        <link rel="stylesheet" href="old_css/all.css">
         <link rel="stylesheet" href="header.css">
         <link rel="stylesheet" type="text/css" href="Authentication.css">
         <link rel="stylesheet" type="text/css" href="ftr.css">
