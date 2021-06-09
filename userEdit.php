@@ -1,0 +1,147 @@
+<?php require "php/connexion.php"; ?>
+
+<?php
+
+if (isset($_POST['user_update_btn'])) {
+
+    $filename = $_FILES['uploadedfile']['name'];
+
+    //$folder = "images/" . $filename;
+    $edit_id = $_POST['id'];
+    $edit_firstname = $_POST['firstname'];
+    $edit_lastname = $_POST['lastname'];
+    $edit_login = $_POST['login'];
+    $edit_password = $_POST['password'];
+    $edit_type = $_POST['type'];
+
+    if ($_FILES['uploadedfile']['size'] == 0) {
+        $edit_img = $_POST["preview_name"];
+    } else {
+        $edit_img = $_FILES["uploadedfile"]["name"];
+    }
+
+    $query = " UPDATE users SET `fname`='$edit_firstname', `lname`='$edit_lastname', `login`='$edit_login', `password`='$edit_password', `type`='$edit_type', `img`='$edit_img', `date`=current_timestamp() WHERE `id`='$edit_id'";
+    $query_run = mysqli_query($connect, $query);
+
+    if ($query_run) {
+        header('Location: index.php?page=crudUsers');
+    }
+}
+
+?>
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Profile</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+</head>
+
+<body>
+    <header>
+        <div class="content-wrapper">
+            <h1>Gaming Shop</h1>
+            <nav>
+                <a href="index.php">Home</a>
+                <a href="index.php?page=products">Products</a>
+                <a href="index.php?page=profile">Profile</a>
+                <?php
+                // if($_SESSION[$username] == "ok"){
+
+                //  }else{
+                ?>
+                <a href="index.php?page=login">Login</a>
+                <?php
+                // }
+                ?>
+
+                <a href="index.php?page=logout">Logout</a>
+            </nav>
+            <div class="link-icons">
+                <a href="index.php?page=cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <?php  // $num_items_in_cart = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0; 
+                    ?>
+                    <!--      <span><?= $num_items_in_cart ?></span> -->
+                </a>
+            </div>
+        </div>
+    </header>
+    <div class="container-fluid">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">User Edit</h6>
+            </div>
+        </div>
+        <div class="card-body">
+
+            <?php
+            if (isset($_POST['edit_data_btn'])) {
+                $id = $_POST['edit_id'];
+
+                $query = "SELECT * FROM users where id='$id' ";
+                $query_run = mysqli_query($connect, $query);
+
+                foreach ($query_run as $row) {
+            ?>
+                    <form method="POST" enctype="multipart/form-data" autocomplete="off">
+                    <div class="form-group">
+                            <label>ImagePreview</label>
+                            <input type="hidden" value="<?php echo $row['image'] ?>" name="preview_name">
+                            <img src="images/<?php echo $row['image'] ?>" style="border-radius: 50%;" height="100px" width="100px" alt="" id="preview">
+                        </div>
+                        <div class="form-group">
+                            <label>Image</label>
+                            <input type="file" name="uploadedfile" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Id</label>
+                            <input type="text" name="id" class="form-control" readonly placeholder="id" value="<?php echo $row['id'] ?>">
+                        </div>
+                        <div class="form-group">
+                            <label>Firstname</label>
+                            <input type="text" name="firstname" class="form-control" placeholder="Type a firstname" value="<?php echo $row['fname'] ?>">
+                        </div>
+                        <div class="form-group">
+                            <label>Lastname</label>
+                            <input type="text" name="lastname" class="form-control" placeholder="Type a lastname" value="<?php echo $row['lname'] ?>">
+                        </div>
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input type="text" name="login" class="form-control" placeholder="Type a username" value="<?php echo $row['login'] ?>">
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="text" name="password" class="form-control" placeholder="Type a password" value="<?php echo $row['password'] ?>">
+                        </div>
+                        <div class="form-group">
+                            <label>Type</label>
+                            <input type="text" name="type" class="form-control" placeholder="Type a type" value="<?php echo $row['type'] ?>">
+                        </div>
+
+                        <a href="index.php?page=crudUsers" class="btn btn-danger"> Cancel</a>
+                        <button type="submit" name="user_update_btn" class="btn btn-primary">Update</button>
+
+                    </form>
+
+            <?php
+                }
+            }
+
+            ?>
+
+
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>
