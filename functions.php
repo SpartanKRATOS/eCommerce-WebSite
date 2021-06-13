@@ -70,4 +70,3 @@ echo <<<EOT
 </html>
 EOT;
 }
-?>
