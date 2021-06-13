@@ -93,14 +93,14 @@ if (isset($_POST['delete_data_btn'])) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <script>
-  var loadFile = function(event) {
-    var output = document.getElementById('output');
-    output.src = URL.createObjectURL(event.target.files[0]);
-    output.onload = function() {
-      URL.revokeObjectURL(output.src) // free memory
-    }
-  };
-</script>
+        var loadFile = function(event) {
+            var output = document.getElementById('output');
+            output.src = URL.createObjectURL(event.target.files[0]);
+            output.onload = function() {
+                URL.revokeObjectURL(output.src) // free memory
+            }
+        };
+    </script>
     <title>CRUD Users</title>
 </head>
 
@@ -137,126 +137,134 @@ if (isset($_POST['delete_data_btn'])) {
 
     <!-- Modal -->
     <div class="wrapping">
-    <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add User</h5>
-                    <button type="button" style=" border-radius:3.25em;"class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row justify-content-center">
-                        <form method="post" autocomplete="off" enctype="multipart/form-data">
-                        <img id="output"  style="border-radius: 50%;" height="200px" width="200px" />
-                            <div class="form-group">
-                                <label>Profile Image</label>
-                                <input type="file" name="uploadfile" id="uploadfile" class="form-control" required onchange="loadFile(event)">
-                            </div>
-                            <div class="form-group">
-                                <label>Firstname</label>
-                                <input type="text" name="firstname" class="form-control" placeholder="Type the firstname">
-                            </div>
-                            <div class="form-group">
-                                <label>Lastname</label>
-                                <input type="text" name="lastname" class="form-control" placeholder="Type the lastname">
-                            </div>
-                            <div class="form-group">
-                                <label>Username</label>
-                                <input type="text" name="login" class="form-control" placeholder="Type the username">
-                            </div>
-                            <div class="form-group">
-                                <label>Password</label>
-                                <input type="text" name="password" class="form-control" placeholder="Type a password">
-                            </div>
-                            <div class="form-group">
-                                <label>Type</label>
-                                <input type="text" name="type" class="form-control" placeholder="Choose a type">
-                            </div>
-                            <div class="form-group">
-                                <button type="submit"  style=" border-radius:3.25em;"class="btn btn-primary" name="submit">Save</button>
-                            </div>
-                        </form>
+        <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add User</h5>
+                        <button type="button" style=" border-radius:3.25em;" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button"  style=" border-radius:3.25em;" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <div class="modal-body">
+                        <div class="row justify-content-center">
+                            <form method="post" autocomplete="off" enctype="multipart/form-data">
+                                <img id="output" style="border-radius: 50%;" height="200px" width="200px" />
+                                <div class="form-group">
+                                    <label>Profile Image</label>
+                                    <input type="file" name="uploadfile" id="uploadfile" class="form-control" required onchange="loadFile(event)">
+                                </div>
+                                <div class="form-group">
+                                    <label>Firstname</label>
+                                    <input type="text" name="firstname" class="form-control" placeholder="Type the firstname">
+                                </div>
+                                <div class="form-group">
+                                    <label>Lastname</label>
+                                    <input type="text" name="lastname" class="form-control" placeholder="Type the lastname">
+                                </div>
+                                <div class="form-group">
+                                    <label>Username</label>
+                                    <input type="text" name="login" class="form-control" placeholder="Type the username">
+                                </div>
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <input type="text" name="password" class="form-control" placeholder="Type a password">
+                                </div>
+                                <div class="form-group">
+                                    <label>Type</label>
+                                    <input type="text" name="type" class="form-control" placeholder="Choose a type">
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" style=" border-radius:3.25em;" class="btn btn-primary" name="submit">Save</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" style=" border-radius:3.25em;" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-                </br>
-    <div style="margin-left: 9%;" class="btn-group" role="group" aria-label="Basic example"><button type="button" style=" border-radius:3.25em;"id="Modal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productModal">
-            ADD
-        </button></div>
-    <div class="row justify-content-center">
-        <!-- Button trigger modal -->
+        </br>
+        <div style="margin-left: 9%;" class="btn-group" role="group" aria-label="Basic example"><button type="button" style=" border-radius:3.25em;" id="Modal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productModal">
+                ADD
+            </button></div>
+        <div class="row justify-content-center">
+            <!-- Button trigger modal -->
 
-        <table class="table" style="width: 80%;">
-            <thead class="thead">
-                <tr>
-                    <th>Id</th>
-                    <th>Image</th>
-                    <th>Firstame</th>
-                    <th>Lastname</th>
-                    <th>Login</th>
-                    <th>Password</th>
-                    <th>Type</th>
-                    <th>Registration date</th>
-                </tr>
-            </thead>
-            <tbody>
+            <table class="table" style="width: 80%;">
+                <thead class="thead">
+                    <tr>
+                        <th>Id</th>
+                        <th>Image</th>
+                        <th>Firstame</th>
+                        <th>Lastname</th>
+                        <th>Login</th>
+                        <th>Password</th>
+                        <th>Type</th>
+                        <th>Registration date</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-                <?php
+                    <?php
 
-                require 'php/connexion.php';
+                    require 'php/connexion.php';
 
-                $checkDB = "SELECT * FROM users;";
-                $result = mysqli_query($connect, $checkDB);
-                $resultCheck = mysqli_num_rows($result);
-                if ($resultCheck > 0) {
-                    while ($row = mysqli_fetch_assoc($result)) {
-                ?>
-                        <tr>
-                            <td> <?php echo $row['id'] ?> </td>
-                            <td> <img id="profilepic" src="<?php echo 'images/', $row['image'] ?>" style="border-radius: 50%;" height="100px" width="100px" alt="Image"> </td>
-                            <td> <?php echo $row['fname'] ?> </td>
-                            <td> <?php echo $row['lname'] ?> </td>
-                            <td> <?php echo $row['login'] ?> </td>
-                            <td> <?php echo $row['password'] ?> </td>
-                            <td> <?php echo $row['type'] ?> </td>
-                            <td> <?php echo $row['date'] ?> </td>
-                            <td>
-                                <form action="index.php?page=userEdit" method="POST">
-                                    <input type="hidden" name="edit_id" value="<?php echo $row['id'] ?>">
-                                    <button type="submit" style=" border-radius:3.25em;" class="btn btn-success" name="edit_data_btn"> Edit </button>
-                                </form>
-                            </td>
-                            <td> <form method="POST">
-                                    <input type="hidden" name="delete_id" value="<?php echo $row['id'] ?>">
-                                    <button type="submit" style=" border-radius:3.25em;" class="btn btn-danger" name="delete_data_btn" onclick=" return confirm('Are you sure?');"> Delete </button>
-                                </form> </td>
-                        </tr>
-                <?php
+                    $checkDB = "SELECT * FROM users;";
+                    $result = mysqli_query($connect, $checkDB);
+                    $resultCheck = mysqli_num_rows($result);
+                    if ($resultCheck > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                    ?>
+                            <tr>
+                                <td> <?php echo $row['id'] ?> </td>
+                                <td> <img id="profilepic" src="<?php echo 'images/', $row['image'] ?>" style="border-radius: 50%;" height="100px" width="100px" alt="Image"> </td>
+                                <td> <?php echo $row['fname'] ?> </td>
+                                <td> <?php echo $row['lname'] ?> </td>
+                                <td> <?php echo $row['login'] ?> </td>
+                                <td> <?php echo $row['password'] ?> </td>
+                                <td> <?php echo $row['type'] ?> </td>
+                                <td> <?php echo $row['date'] ?> </td>
+                                <td>
+                                    <form action="index.php?page=userEdit" method="POST">
+                                        <input type="hidden" name="edit_id" value="<?php echo $row['id'] ?>">
+                                        <button type="submit" style=" border-radius:3.25em;" class="btn btn-success" name="edit_data_btn"> Edit </button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form method="POST">
+                                        <input type="hidden" name="delete_id" value="<?php echo $row['id'] ?>">
+                                        <button type="submit" style=" border-radius:3.25em;" class="btn btn-danger" name="delete_data_btn" onclick=" return confirm('Are you sure?');"> Delete </button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form action="index.php?page=history&id=<?php echo $row['id']; ?>" method="POST">
+                                        <input type="hidden" name="history_id" value="<?php echo $row['id'] ?>">
+                                        <button type="submit" style=" border-radius:3.25em;" class="btn btn-warning" name="edit_data_btn"> History </button>
+                                    </form>
+                                </td>
+                            </tr>
+                    <?php
 
+                        }
                     }
-                }
-                ?>
-            </tbody>
-        </table>
-    </div>
+                    ?>
+                </tbody>
+            </table>
+        </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-    <script>
-        var myModal = document.getElementById('Modal')
-        var myInput = document.getElementById('exampleModal')
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+        <script>
+            var myModal = document.getElementById('Modal')
+            var myInput = document.getElementById('exampleModal')
 
-        myModal.addEventListener('shown.bs.modal', function() {
-            myInput.focus()
-        })
-    </script>
+            myModal.addEventListener('shown.bs.modal', function() {
+                myInput.focus()
+            })
+        </script>
     </div>
 </body>
 

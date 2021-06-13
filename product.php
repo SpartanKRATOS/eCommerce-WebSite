@@ -31,6 +31,22 @@ if ($resultCheck > 0) {
 }
 
 if (isset($_GET['id'])) {
+    $getID = $_GET['id'];
+    $sql = "SELECT * FROM products where id='$getID'";
+    $result = mysqli_query($connect, $sql);
+    $resultCheck = mysqli_num_rows($result);
+    if ($resultCheck > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo 'fetched prodname and img';
+            $prod_name = $row['name'];
+            $prod_img = $row['img'];
+        }
+    }
+
+    $userID = $_SESSION['id'];
+    $checkDBUsername = "INSERT INTO history (prod_id, user_id, name, date, img) VALUES ('$getID', '$userID', ' $prod_name',current_timestamp(), '$prod_img'); ";
+    $result = mysqli_query($connect, $checkDBUsername);
+
     $pdo = pdo_connect_mysql();
     $stmt = $pdo->prepare('SELECT * FROM products WHERE id = ?');
     $stmt->execute([$_GET['id']]);
