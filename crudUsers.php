@@ -9,17 +9,17 @@ if (isset($_POST["submit"])) {
     $filename = $_FILES["uploadfile"]["name"];
     $tempname = $_FILES["uploadfile"]["tmp_name"];
     $folder = "images/" . $filename;
-    $name = $_POST["name"];
-    $desc = $_POST["desc"];
-    $price = $_POST["price"];
-    $rrp = $_POST["rrp"];
-    $quantity = $_POST["quantity"];
+    $firstname = $_POST["firstname"];
+    $lastname = $_POST["lastname"];
+    $login = $_POST["login"];
+    $password = $_POST["password"];
+    $type = $_POST["type"];
     // $date = date('Y-m-d h:i:s', time());
 
 
 
     // Get all the submitted data from the form
-    $sql = "INSERT INTO `products` (`name`,`desc`,`price`,`rrp`,`quantity`,`img`,`date_added`) VALUES ('$name','$desc','$price','$rrp','$quantity','$filename',current_timestamp());";
+    $sql = "INSERT INTO `users` (`fname`,`lname`,`login`,`password`,`type`,`image`,`date`) VALUES ('$firstname','$lastname','$login','$password','$type','$filename',current_timestamp());";
 
     // Execute query
     mysqli_query($connect, $sql);
@@ -32,23 +32,23 @@ if (isset($_POST["submit"])) {
     }
 }
 ?>
-
 <?php
 require "php/connexion.php";
 
 if (isset($_POST['delete_data_btn'])) {
 
     $delete_id = $_POST["delete_id"];
-    $query = " DELETE FROM `products` WHERE `id`='$delete_id'";
+    $query = " DELETE FROM `users` WHERE `id`='$delete_id'";
     $query_run = mysqli_query($connect, $query);
 
 
     if ($query_run) {
-        header('Location: index.php?page=crudProducts');
+        header('Location: index.php?page=crudUsers');
     }
 }
 
 ?>
+
 
 <?php
 
@@ -82,9 +82,6 @@ if (isset($_POST['delete_data_btn'])) {
 // //Get the amount of items in the shopping cart, this will be displayed in the header
 // $num_items_in_cart = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
 ?>
- <?php
-include 'inc.php/html_body.php';
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -92,15 +89,19 @@ include 'inc.php/html_body.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="old_css/all.css">
-    <script src="https://kit.fontawesome.com/e1af7c97bd.js" crossorigin="anonymous"></script>
-
     <link rel="stylesheet" type="text/css" href="crud.css">
-    <link rel="stylesheet" type="text/css" href="ftr.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-
-    <title>CRUD Products</title>
+    <script>
+  var loadFile = function(event) {
+    var output = document.getElementById('output');
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function() {
+      URL.revokeObjectURL(output.src) // free memory
+    }
+  };
+</script>
+    <title>CRUD Users</title>
 </head>
 
 <body>
@@ -140,45 +141,45 @@ include 'inc.php/html_body.php';
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add Product</h5>
-                    <button type="button" style=" border-radius:3.25em;" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title" id="exampleModalLabel">Add User</h5>
+                    <button type="button" style=" border-radius:3.25em;"class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="row justify-content-center">
                         <form method="post" autocomplete="off" enctype="multipart/form-data">
-
+                        <img id="output"  style="border-radius: 50%;" height="200px" width="200px" />
                             <div class="form-group">
-                                <label>Name</label>
-                                <input type="text" name="name" class="form-control" placeholder="Type a name">
+                                <label>Profile Image</label>
+                                <input type="file" name="uploadfile" id="uploadfile" class="form-control" required onchange="loadFile(event)">
                             </div>
                             <div class="form-group">
-                                <label>Description</label>
-                                <input type="text" name="desc" class="form-control" placeholder="Type a desc">
+                                <label>Firstname</label>
+                                <input type="text" name="firstname" class="form-control" placeholder="Type the firstname">
                             </div>
                             <div class="form-group">
-                                <label>Price</label>
-                                <input type="text" name="price" class="form-control" placeholder="Type a price">
+                                <label>Lastname</label>
+                                <input type="text" name="lastname" class="form-control" placeholder="Type the lastname">
                             </div>
                             <div class="form-group">
-                                <label>RRP</label>
-                                <input type="text" name="rrp" class="form-control" placeholder="Type a rrp">
+                                <label>Username</label>
+                                <input type="text" name="login" class="form-control" placeholder="Type the username">
                             </div>
                             <div class="form-group">
-                                <label>Quantity</label>
-                                <input type="text" name="quantity" class="form-control" placeholder="Type a quantity">
+                                <label>Password</label>
+                                <input type="text" name="password" class="form-control" placeholder="Type a password">
                             </div>
                             <div class="form-group">
-                                <label>Image</label>
-                                <input type="file" name="uploadfile" id="uploadfile" class="form-control" required>
+                                <label>Type</label>
+                                <input type="text" name="type" class="form-control" placeholder="Choose a type">
                             </div>
                             <div class="form-group">
-                                <button type="submit" style=" border-radius:3.25em;"class="btn btn-primary" name="submit">Save</button>
+                                <button type="submit"  style=" border-radius:3.25em;"class="btn btn-primary" name="submit">Save</button>
                             </div>
                         </form>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" style=" border-radius:3.25em;" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button"  style=" border-radius:3.25em;" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
                 </div>
             </div>
@@ -186,7 +187,7 @@ include 'inc.php/html_body.php';
     </div>
 
                 </br>
-    <div style="margin-left: 9%;" class="btn-group" role="group" aria-label="Basic example"><button type="button" id="Modal" style=" border-radius:3.25em;" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productModal">
+    <div style="margin-left: 9%;" class="btn-group" role="group" aria-label="Basic example"><button type="button" style=" border-radius:3.25em;"id="Modal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productModal">
             ADD
         </button></div>
     <div class="row justify-content-center">
@@ -195,14 +196,14 @@ include 'inc.php/html_body.php';
         <table class="table" style="width: 80%;">
             <thead class="thead">
                 <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Price</th>
-                    <th>RRP</th>
-                    <th>Quantity</th>
+                    <th>Id</th>
                     <th>Image</th>
-                    <th>date_added</th>
+                    <th>Firstame</th>
+                    <th>Lastname</th>
+                    <th>Login</th>
+                    <th>Password</th>
+                    <th>Type</th>
+                    <th>Registration date</th>
                 </tr>
             </thead>
             <tbody>
@@ -211,7 +212,7 @@ include 'inc.php/html_body.php';
 
                 require 'php/connexion.php';
 
-                $checkDB = "SELECT * FROM products;";
+                $checkDB = "SELECT * FROM users;";
                 $result = mysqli_query($connect, $checkDB);
                 $resultCheck = mysqli_num_rows($result);
                 if ($resultCheck > 0) {
@@ -219,25 +220,23 @@ include 'inc.php/html_body.php';
                 ?>
                         <tr>
                             <td> <?php echo $row['id'] ?> </td>
-                            <td> <?php echo $row['name'] ?> </td>
-                            <td> <?php echo $row['desc'] ?> </td>
-                            <td> <?php echo $row['price'] ?> </td>
-                            <td> <?php echo $row['rrp'] ?> </td>
-                            <td> <?php echo $row['quantity'] ?> </td>
-                            <td> <img src="<?php echo 'images/', $row['img'] ?>" height="100px" width="100px" alt="Image"> </td>
-                            <td> <?php echo $row['date_added'] ?> </td>
+                            <td> <img id="profilepic" src="<?php echo 'images/', $row['image'] ?>" style="border-radius: 50%;" height="100px" width="100px" alt="Image"> </td>
+                            <td> <?php echo $row['fname'] ?> </td>
+                            <td> <?php echo $row['lname'] ?> </td>
+                            <td> <?php echo $row['login'] ?> </td>
+                            <td> <?php echo $row['password'] ?> </td>
+                            <td> <?php echo $row['type'] ?> </td>
+                            <td> <?php echo $row['date'] ?> </td>
                             <td>
-                                <form action="index.php?page=productEdit" method="POST">
+                                <form action="index.php?page=userEdit" method="POST">
                                     <input type="hidden" name="edit_id" value="<?php echo $row['id'] ?>">
                                     <button type="submit" style=" border-radius:3.25em;" class="btn btn-success" name="edit_data_btn"> Edit </button>
                                 </form>
                             </td>
-                            <td>
-                                <form method="POST">
+                            <td> <form method="POST">
                                     <input type="hidden" name="delete_id" value="<?php echo $row['id'] ?>">
                                     <button type="submit" style=" border-radius:3.25em;" class="btn btn-danger" name="delete_data_btn" onclick=" return confirm('Are you sure?');"> Delete </button>
-                                </form>
-                            </td>
+                                </form> </td>
                         </tr>
                 <?php
 
@@ -260,5 +259,5 @@ include 'inc.php/html_body.php';
     </script>
     </div>
 </body>
-<?php sub_footer(); ?>
+
 </html>

@@ -166,9 +166,10 @@ function sub_headers(){
 echo '
 <header class="navbarclr">
           <div class="logo">
-            <a href="index.php?page=Home"
-              ><img src="images/roofTopSwordmanMad.png" alt="logo"
-            /></a>
+            <a href="index.php?page=Home" class="nav-link" >
+              <span class="link-text logo-text">GameStart</span>
+              <i class="fad fa-dragon"></i>
+            </a>
           </div>
           <nav>
             <div class="burger">

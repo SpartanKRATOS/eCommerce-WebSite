@@ -15,12 +15,12 @@ html {
   background: rgba(206, 206, 206, 0.3);
 }
 ::-webkit-scrollbar-thumb:horizontal {
-  background: gray;
-  border-radius: 10px;
+  background: #2d2d2d;
+  border-radius: 100px;
 }
 ::-webkit-scrollbar-thumb:vertical {
-  background: gray;
-  border-radius: 10px;
+  background: #2d2d2d;
+  border-radius: 100px;
 }
 /** this is a whole body for forming the page and make the top nav bar color**/
 .navbarclr {
@@ -37,20 +37,40 @@ header {
   height: 60px;
 }
 
+
 /** this is for forming logo dimensions **/
 .logo {
-  width: 20%;
-  height: 100%;
+
   display: flex;
   align-items: center;
-}
-.logo a {
-  height: 100%;
-}
-.logo a img {
-  height: 100%;
-}
 
+}
+.nav-link {
+  display: flex;
+  align-items: center;
+  color: lightgray;
+  text-decoration: none;
+  margin-left: 25px;
+  
+}
+a.nav-link{
+  font-size: 100px;
+}
+.link-text{
+  display: none;
+}
+.logo-text{
+  display: inline;
+  position: relative;
+}
+span.link-text.logo-text {
+  font-size: 35PX;
+  font-weight: bold;}
+i.fad.fa-dragon {
+  font-size: 45px;
+  color: lightgray;
+  
+}
 /** this is for nav-bar **/
 nav {
   width: 50%;
@@ -179,6 +199,8 @@ article {
     position: relative;
     left: 50%;
     transform: translate(-50%, 0%);
+    margin-left: -15px;
+
   }
   nav {
     width: 100%;
