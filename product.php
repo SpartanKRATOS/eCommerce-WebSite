@@ -42,10 +42,7 @@ if (isset($_GET['id'])) {
             $prod_img = $row['img'];
         }
     }
-
-    $userID = $_SESSION['id'];
-    $checkDBUsername = "INSERT INTO history (prod_id, user_id, name, date, img) VALUES ('$getID', '$userID', ' $prod_name',current_timestamp(), '$prod_img'); ";
-    $result = mysqli_query($connect, $checkDBUsername);
+    // GET PRODUCT INFORMATIONS
 
     $pdo = pdo_connect_mysql();
     $stmt = $pdo->prepare('SELECT * FROM products WHERE id = ?');
@@ -54,28 +51,39 @@ if (isset($_GET['id'])) {
     if (!$product) {
         exit('Product does not exist!');
     }
-    if (isset($_SESSION['product']) && is_array($_SESSION['product'])) {
+    ///////////////////////////////////////////////////////////////////////
 
-        // if (array_key_exists($_GET['id'], $_SESSION['product'])) {
-        if (in_array($_GET['id'], $_SESSION['product'])) {
-            // Do nothing
-            //  echo 'array_key exists';
+    //CHECK IF SESSION ID EXISTS, IF IT DOES NOT, IT MEANS USER IN NOT AUTHENTIFICATED, SO NO NEED TO CAPTURE
+    // CLICKS ON THE PRODUCT 
+    if (!empty($_SESSION['id'])) {
+        $userID = $_SESSION['id'];
+        $checkDBUsername = "INSERT INTO history (prod_id, user_id, name, date, img) VALUES ('$getID', '$userID', ' $prod_name',current_timestamp(), '$prod_img'); ";
+        $result = mysqli_query($connect, $checkDBUsername);
+
+        // check if user already views the product
+        if (isset($_SESSION['product']) && is_array($_SESSION['product'])) {
+
+            // if (array_key_exists($_GET['id'], $_SESSION['product'])) {
+            if (in_array($_GET['id'], $_SESSION['product'])) {
+                // Do nothing
+                //  echo 'array_key exists';
+            } else {
+                // Product have not been clicked before so we add a click
+
+                //  echo 'array_key does not exists';
+                array_push($_SESSION['product'], $_GET['id']);
+                $anID = $_GET['id'];
+                $query = " UPDATE products SET `clicks` = `clicks` + 1 WHERE `id`='$anID'";
+                $query_run = mysqli_query($connect, $query);
+            }
         } else {
-            // Product have not been clicked before so we add a click
-
-            //  echo 'array_key does not exists';
-            array_push($_SESSION['product'], $_GET['id']);
-            $anID = $_GET['id'];
-            $query = " UPDATE products SET `clicks` = `clicks` + 1 WHERE `id`='$anID'";
-            $query_run = mysqli_query($connect, $query);
+            // $_SESSION['product'] = array();
+            // echo 'created an array and incremented value';
+            // array_push($_SESSION['product'], $_GET['id']);
+            // $anID = $_GET['id'];
+            // $query = " UPDATE products SET `clicks` += 1 WHERE `id`='$anID'";
+            // $query_run = mysqli_query($connect, $query);
         }
-    } else {
-        // $_SESSION['product'] = array();
-        // echo 'created an array and incremented value';
-        // array_push($_SESSION['product'], $_GET['id']);
-        // $anID = $_GET['id'];
-        // $query = " UPDATE products SET `clicks` += 1 WHERE `id`='$anID'";
-        // $query_run = mysqli_query($connect, $query);
     }
 } else {
     exit('Product does not exist!');
