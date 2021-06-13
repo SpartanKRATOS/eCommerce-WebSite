@@ -82,6 +82,9 @@ if (isset($_POST['delete_data_btn'])) {
 // //Get the amount of items in the shopping cart, this will be displayed in the header
 // $num_items_in_cart = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
 ?>
+<?php
+include 'inc.php/html_body.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -89,8 +92,12 @@ if (isset($_POST['delete_data_btn'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="old_css/all.css">
+    <script src="https://kit.fontawesome.com/e1af7c97bd.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="crud.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="header.css">
+    <link rel="stylesheet" type="text/css" href="ftr.css">
+    <link rel="stylesheet" type="text/css" href="boot.scss">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <script>
         var loadFile = function(event) {
@@ -105,24 +112,9 @@ if (isset($_POST['delete_data_btn'])) {
 </head>
 
 <body>
-    <header>
-        <div class="content-wrapper">
-            <h1>Gaming Shop</h1>
-            <nav>
-                <a href="index.php">Home</a>
-                <a href="index.php?page=products">Products</a>
-                <a href="index.php?page=profile">Profile</a>
-                <?php
-                // if ($_SESSION[$username] == "ok") {
-                // } else {
-                ?>
-                // <a href="index.php?page=login">Login</a>
-                <?php
-                //  }
-                ?>
+<?php admin_headers(); ?>
 
-                <a href="index.php?page=logout">Logout</a>
-            </nav>
+
             <div class="link-icons">
                 <a href="index.php?page=cart">
                     <i class="fas fa-shopping-cart"></i>
@@ -130,8 +122,8 @@ if (isset($_POST['delete_data_btn'])) {
                     <span><?= $num_items_in_cart ?></span>
                 </a>
             </div>
-        </div>
-    </header>
+
+
 
 
 
@@ -267,5 +259,5 @@ if (isset($_POST['delete_data_btn'])) {
         </script>
     </div>
 </body>
-
+<?php sub_footer(); ?>
 </html>

@@ -29,7 +29,9 @@ if (isset($_POST['user_update_btn'])) {
 }
 
 ?>
-
+<?php
+include 'inc.php/html_body.php';
+?>
 
 <!DOCTYPE html>
 <html>
@@ -37,33 +39,18 @@ if (isset($_POST['user_update_btn'])) {
 <head>
     <meta charset="utf-8">
     <title>Profile</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="header.css">
+    <link rel="stylesheet" type="text/css" href="ftr.css">
+    <link rel="stylesheet" type="text/css" href="boot.scss">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
     
 </head>
 
 <body>
-    <header>
-        <div class="content-wrapper">
-            <h1>Gaming Shop</h1>
-            <nav>
-                <a href="index.php">Home</a>
-                <a href="index.php?page=products">Products</a>
-                <a href="index.php?page=profile">Profile</a>
-                <?php
-                // if($_SESSION[$username] == "ok"){
+<?php admin_headers(); ?>
 
-                //  }else{
-                ?>
-                <a href="index.php?page=login">Login</a>
-                <?php
-                // }
-                ?>
-
-                <a href="index.php?page=logout">Logout</a>
-            </nav>
             <div class="link-icons">
                 <a href="index.php?page=cart">
                     <i class="fas fa-shopping-cart"></i>
@@ -72,8 +59,7 @@ if (isset($_POST['user_update_btn'])) {
                     <!--      <span><?= $num_items_in_cart ?></span> -->
                 </a>
             </div>
-        </div>
-    </header>
+
     <div class="container-fluid">
         <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -144,5 +130,5 @@ if (isset($_POST['user_update_btn'])) {
 
 
 </body>
-
+<?php sub_footer(); ?>
 </html>
