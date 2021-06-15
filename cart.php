@@ -1,7 +1,11 @@
 <?php
+
+session_start();
+
 // If the user clicked the add to cart button on the product page we can check for the form data
 if (isset($_POST['product_id'], $_POST['quantity']) && is_numeric($_POST['product_id']) && is_numeric($_POST['quantity'])) {
     // Set the post variables so we easily identify them, also make sure they are integer
+    echo 'added to the cart';
     $product_id = (int)$_POST['product_id'];
     $quantity = (int)$_POST['quantity'];
     // Prepare the SQL statement, we basically are checking if the product exists in our databaser
@@ -57,6 +61,8 @@ if (isset($_POST['update']) && isset($_SESSION['cart'])) {
 
 // Send the user to the place order page if they click the Place Order button, also the cart should not be empty
 if (isset($_POST['placeorder']) && isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
+    unset($_SESSION['cart']);
+    $_SESSION['cart'] = array();
     header('Location: index.php?page=placeorder');
     exit;
 }
@@ -82,57 +88,99 @@ if ($products_in_cart) {
 }
 ?>
 
-<?=template_header('Cart')?>
+<!DOCTYPE html>
+<html>
 
-<div class="cart content-wrapper">
-    <h1>Shopping Cart</h1>
-    <form action="index.php?page=cart" method="post">
-        <table>
-            <thead>
-                <tr>
-                    <td colspan="2">Product</td>
-                    <td>Price</td>
-                    <td>Quantity</td>
-                    <td>Total</td>
-                </tr>
-            </thead>
-            <tbody>
-                <?php if (empty($products)): ?>
-                <tr>
-                    <td colspan="5" style="text-align:center;">You have no products added in your Shopping Cart</td>
-                </tr>
-                <?php else: ?>
-                <?php foreach ($products as $product): ?>
-                <tr>
-                    <td class="img">
-                        <a href="index.php?page=product&id=<?=$product['id']?>">
-                            <img src="images/<?=$product['img']?>" width="50" height="50" alt="<?=$product['name']?>">
-                        </a>
-                    </td>
-                    <td>
-                        <a href="index.php?page=product&id=<?=$product['id']?>"><?=$product['name']?></a>
-                        <br>
-                        <a href="index.php?page=cart&remove=<?=$product['id']?>" class="remove">Remove</a>
-                    </td>
-                    <td class="price">&dollar;<?=$product['price']?></td>
-                    <td class="quantity">
-                        <input type="number" name="quantity-<?=$product['id']?>" value="<?=$products_in_cart[$product['id']]?>" min="1" max="<?=$product['quantity']?>" placeholder="Quantity" required>
-                    </td>
-                    <td class="price">&dollar;<?=$product['price'] * $products_in_cart[$product['id']]?></td>
-                </tr>
-                <?php endforeach; ?>
-                <?php endif; ?>
-            </tbody>
-        </table>
-        <div class="subtotal">
-            <span class="text">Subtotal</span>
-            <span class="price">&dollar;<?=$subtotal?></span>
-        </div>
-        <div class="buttons">
-            <input type="submit" value="Update" name="update">
-            <input type="submit" value="Place Order" name="placeorder">
-        </div>
-    </form>
-</div>
+<head>
+    <meta charset="utf-8">
+    <title>Cart</title>
+    <link href="css/cart.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+</head>
 
-<?=template_footer()?>
+<body>
+    <header>
+        <div class="content-wrapper">
+            <h1>Gaming Shop</h1>
+            <nav>
+                <a href="index.php">Home</a>
+                <a href="index.php?page=products">Products</a>
+                <a href="index.php?page=profile">Profile</a>
+                <?php
+                if (empty($_SESSION['id'])) { ?>
+                    <a href="index.php?page=login">Login</a>
+                    <?php
+                } else {
+
+                    if (!empty($_SESSION['id'])) {
+
+                    ?>
+                        <a href="index.php?page=logout">Logout</a>
+                <?php
+
+                    }
+                }
+                ?>
+            </nav>
+            <div class="link-icons">
+                <a href="index.php?page=cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <?php $num_items_in_cart = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0; ?>
+                    <span><?= $num_items_in_cart ?></span>
+                </a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="cart content-wrapper">
+            <h1>Shopping Cart</h1>
+            <form action="index.php?page=cart" method="post">
+                <table>
+                    <thead>
+                        <tr>
+                            <td colspan="2">Product</td>
+                            <td>Price</td>
+                            <td>Quantity</td>
+                            <td>Total</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php if (empty($products)) : ?>
+                            <tr>
+                                <td colspan="5" style="text-align:center;">You have no products added in your Shopping Cart</td>
+                            </tr>
+                        <?php else : ?>
+                            <?php foreach ($products as $product) : ?>
+                                <tr>
+                                    <td class="img">
+                                        <a href="index.php?page=product&id=<?= $product['id'] ?>">
+                                            <img src="images/<?= $product['img'] ?>" width="50" height="50" alt="<?= $product['name'] ?>">
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="index.php?page=product&id=<?= $product['id'] ?>"><?= $product['name'] ?></a>
+                                        <br>
+                                        <a href="index.php?page=cart&remove=<?= $product['id'] ?>" class="remove">Remove</a>
+                                    </td>
+                                    <td class="price">&dollar;<?= $product['price'] ?></td>
+                                    <td class="quantity">
+                                        <input type="number" name="quantity-<?= $product['id'] ?>" value="<?= $products_in_cart[$product['id']] ?>" min="1" max="<?= $product['quantity'] ?>" placeholder="Quantity" required>
+                                    </td>
+                                    <td class="price">&dollar;<?= $product['price'] * $products_in_cart[$product['id']] ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    </tbody>
+                </table>
+                <div class="subtotal">
+                    <span class="text">Subtotal</span>
+                    <span class="price">&dollar;<?= $subtotal ?></span>
+                </div>
+                <div class="buttons">
+                    <input type="submit" value="Update" name="update">
+                    <input type="submit" value="Place Order" name="placeorder">
+                </div>
+            </form>
+        </div>
+
+        <?= template_footer() ?>
