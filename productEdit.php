@@ -40,24 +40,19 @@ include 'inc.php/html_body.php';
 <head>
     <meta charset="utf-8">
     <title>Profile</title>
+    
     <link rel="stylesheet" type="text/css" href="header.css">
     <link rel="stylesheet" type="text/css" href="ftr.css">
     <link rel="stylesheet" type="text/css" href="boot.scss">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="old_css/all.css">
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 </head>
 
 <body>
 <?php admin_headers(); ?>
-            <div class="link-icons">
-                <a href="index.php?page=cart">
-                    <i class="fas fa-shopping-cart"></i>
-                    <?php  // $num_items_in_cart = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0; 
-                    ?>
-                    <!--      <span><?= $num_items_in_cart ?></span> -->
-                </a>
-            </div>
+
 
     <div class="container-fluid">
         <div class="card shadow mb-4">

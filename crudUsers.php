@@ -115,13 +115,6 @@ include 'inc.php/html_body.php';
 <?php admin_headers(); ?>
 
 
-            <div class="link-icons">
-                <a href="index.php?page=cart">
-                    <i class="fas fa-shopping-cart"></i>
-                    <?php $num_items_in_cart = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0; ?>
-                    <span><?= $num_items_in_cart ?></span>
-                </a>
-            </div>
 
 
 
