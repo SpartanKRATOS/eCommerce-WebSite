@@ -84,6 +84,9 @@ if (isset($_POST['delete_data_btn'])) {
 ?>
 <?php
 include 'inc.php/html_body.php';
+
+session_start();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -113,13 +116,20 @@ include 'inc.php/html_body.php';
 </head>
 
 <body>
-<?php admin_headers(); ?>
+    <?php
+    $iddd = $_SESSION['id'];
+    $type = $_SESSION['type'];
+    if (empty($iddd)) {
+        header('location:index.php');
+        exit();
+    }
+    if ($type != 'admin') {
+        header('location:index.php');
+        exit();
+    }
+    admin_headers($iddd, $type);
 
-
-
-
-
-
+    ?>
 
     <!-- Modal -->
     <div class="wrapping">
@@ -254,4 +264,5 @@ include 'inc.php/html_body.php';
     </div>
 </body>
 <?php sub_footer(); ?>
+
 </html>

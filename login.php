@@ -35,6 +35,7 @@ if (isset($_POST['submit'])) {
                     $foundUsername = $row['login'];
                     $foundPwd = $row['password'];
                     $id = $row['id'];
+                    $type = $row['type'];
                     break;
                 }
             }
@@ -44,6 +45,7 @@ if (isset($_POST['submit'])) {
                 $_SESSION[$username] = "ok";
                 $_SESSION['id'] = $id;
                 $_SESSION['product'] = array();
+                $_SESSION['type'] = $type;
                 header("location:index.php?page=profile");
             } else {
 

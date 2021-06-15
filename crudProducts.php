@@ -82,8 +82,9 @@ if (isset($_POST['delete_data_btn'])) {
 // //Get the amount of items in the shopping cart, this will be displayed in the header
 // $num_items_in_cart = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
 ?>
- <?php
+<?php
 include 'inc.php/html_body.php';
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -105,7 +106,20 @@ include 'inc.php/html_body.php';
 </head>
 
 <body>
-<?php admin_headers(); ?>
+    <?php
+    $iddd = $_SESSION['id'];
+    $type = $_SESSION['type'];
+    if (empty($iddd)) {
+        header('location:index.php');
+        exit();
+    }
+    if ($type != 'admin') {
+        header('location:index.php');
+        exit();
+    }
+    admin_headers($iddd, $type);
+
+    ?>
 
 
 
@@ -113,129 +127,130 @@ include 'inc.php/html_body.php';
 
     <!-- Modal -->
     <div class="wrapping">
-    <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add Product</h5>
-                    <button type="button" style=" border-radius:3.25em;" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row justify-content-center">
-                        <form method="post" autocomplete="off" enctype="multipart/form-data">
-
-                            <div class="form-group">
-                                <label>Name</label>
-                                <input type="text" name="name" class="form-control" placeholder="Type a name">
-                            </div>
-                            <div class="form-group">
-                                <label>Description</label>
-                                <input type="text" name="desc" class="form-control" placeholder="Type a desc">
-                            </div>
-                            <div class="form-group">
-                                <label>Price</label>
-                                <input type="text" name="price" class="form-control" placeholder="Type a price">
-                            </div>
-                            <div class="form-group">
-                                <label>RRP</label>
-                                <input type="text" name="rrp" class="form-control" placeholder="Type a rrp">
-                            </div>
-                            <div class="form-group">
-                                <label>Quantity</label>
-                                <input type="text" name="quantity" class="form-control" placeholder="Type a quantity">
-                            </div>
-                            <div class="form-group">
-                                <label>Image</label>
-                                <input type="file" name="uploadfile" id="uploadfile" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" style=" border-radius:3.25em;"class="btn btn-primary" name="submit">Save</button>
-                            </div>
-                        </form>
+        <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add Product</h5>
+                        <button type="button" style=" border-radius:3.25em;" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" style=" border-radius:3.25em;" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <div class="modal-body">
+                        <div class="row justify-content-center">
+                            <form method="post" autocomplete="off" enctype="multipart/form-data">
 
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <input type="text" name="name" class="form-control" placeholder="Type a name">
+                                </div>
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <input type="text" name="desc" class="form-control" placeholder="Type a desc">
+                                </div>
+                                <div class="form-group">
+                                    <label>Price</label>
+                                    <input type="text" name="price" class="form-control" placeholder="Type a price">
+                                </div>
+                                <div class="form-group">
+                                    <label>RRP</label>
+                                    <input type="text" name="rrp" class="form-control" placeholder="Type a rrp">
+                                </div>
+                                <div class="form-group">
+                                    <label>Quantity</label>
+                                    <input type="text" name="quantity" class="form-control" placeholder="Type a quantity">
+                                </div>
+                                <div class="form-group">
+                                    <label>Image</label>
+                                    <input type="file" name="uploadfile" id="uploadfile" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" style=" border-radius:3.25em;" class="btn btn-primary" name="submit">Save</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" style=" border-radius:3.25em;" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-                </br>
-    <div style="margin-left: 9%;" class="btn-group" role="group" aria-label="Basic example"><button type="button" id="Modal" style=" border-radius:3.25em;" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productModal">
-            ADD
-        </button></div>
-    <div class="row justify-content-center">
-        <!-- Button trigger modal -->
+        </br>
+        <div style="margin-left: 9%;" class="btn-group" role="group" aria-label="Basic example"><button type="button" id="Modal" style=" border-radius:3.25em;" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productModal">
+                ADD
+            </button></div>
+        <div class="row justify-content-center">
+            <!-- Button trigger modal -->
 
-        <table class="table table-responsive" style="width: 80%;">
-            <thead class="thead">
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Price</th>
-                    <th>RRP</th>
-                    <th>Quantity</th>
-                    <th>Image</th>
-                    <th>date_added</th>
-                </tr>
-            </thead>
-            <tbody>
+            <table class="table table-responsive" style="width: 80%;">
+                <thead class="thead">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>RRP</th>
+                        <th>Quantity</th>
+                        <th>Image</th>
+                        <th>date_added</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-                <?php
+                    <?php
 
-                require 'php/connexion.php';
+                    require 'php/connexion.php';
 
-                $checkDB = "SELECT * FROM products;";
-                $result = mysqli_query($connect, $checkDB);
-                $resultCheck = mysqli_num_rows($result);
-                if ($resultCheck > 0) {
-                    while ($row = mysqli_fetch_assoc($result)) {
-                ?>
-                        <tr>
-                            <td> <?php echo $row['id'] ?> </td>
-                            <td> <?php echo $row['name'] ?> </td>
-                            <td> <?php echo $row['desc'] ?> </td>
-                            <td> <?php echo $row['price'] ?> </td>
-                            <td> <?php echo $row['rrp'] ?> </td>
-                            <td> <?php echo $row['quantity'] ?> </td>
-                            <td> <img src="<?php echo 'images/', $row['img'] ?>" height="100px" width="100px" alt="Image"> </td>
-                            <td> <?php echo $row['date_added'] ?> </td>
-                            <td>
-                                <form action="index.php?page=productEdit" method="POST">
-                                    <input type="hidden" name="edit_id" value="<?php echo $row['id'] ?>">
-                                    <button type="submit" style=" border-radius:3.25em;" class="btn btn-success" name="edit_data_btn"> Edit </button>
-                                </form>
-                            </td>
-                            <td>
-                                <form method="POST">
-                                    <input type="hidden" name="delete_id" value="<?php echo $row['id'] ?>">
-                                    <button type="submit" style=" border-radius:3.25em;" class="btn btn-danger" name="delete_data_btn" onclick=" return confirm('Are you sure?');"> Delete </button>
-                                </form>
-                            </td>
-                        </tr>
-                <?php
+                    $checkDB = "SELECT * FROM products;";
+                    $result = mysqli_query($connect, $checkDB);
+                    $resultCheck = mysqli_num_rows($result);
+                    if ($resultCheck > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                    ?>
+                            <tr>
+                                <td> <?php echo $row['id'] ?> </td>
+                                <td> <?php echo $row['name'] ?> </td>
+                                <td> <?php echo $row['desc'] ?> </td>
+                                <td> <?php echo $row['price'] ?> </td>
+                                <td> <?php echo $row['rrp'] ?> </td>
+                                <td> <?php echo $row['quantity'] ?> </td>
+                                <td> <img src="<?php echo 'images/', $row['img'] ?>" height="100px" width="100px" alt="Image"> </td>
+                                <td> <?php echo $row['date_added'] ?> </td>
+                                <td>
+                                    <form action="index.php?page=productEdit" method="POST">
+                                        <input type="hidden" name="edit_id" value="<?php echo $row['id'] ?>">
+                                        <button type="submit" style=" border-radius:3.25em;" class="btn btn-success" name="edit_data_btn"> Edit </button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form method="POST">
+                                        <input type="hidden" name="delete_id" value="<?php echo $row['id'] ?>">
+                                        <button type="submit" style=" border-radius:3.25em;" class="btn btn-danger" name="delete_data_btn" onclick=" return confirm('Are you sure?');"> Delete </button>
+                                    </form>
+                                </td>
+                            </tr>
+                    <?php
 
+                        }
                     }
-                }
-                ?>
-            </tbody>
-        </table>
-    </div>
+                    ?>
+                </tbody>
+            </table>
+        </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-    <script>
-        var myModal = document.getElementById('Modal')
-        var myInput = document.getElementById('exampleModal')
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+        <script>
+            var myModal = document.getElementById('Modal')
+            var myInput = document.getElementById('exampleModal')
 
-        myModal.addEventListener('shown.bs.modal', function() {
-            myInput.focus()
-        })
-    </script>
+            myModal.addEventListener('shown.bs.modal', function() {
+                myInput.focus()
+            })
+        </script>
     </div>
 </body>
 <?php sub_footer(); ?>
+
 </html>

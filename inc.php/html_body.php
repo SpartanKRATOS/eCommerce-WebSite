@@ -1,7 +1,8 @@
-<?php  
+<?php
 
-function footer(){
-echo '
+function footer()
+{
+  echo '
 <footer>
         <div class="footer-content">
           <div class="main-footer">
@@ -45,7 +46,8 @@ echo '
 ';
 }
 
-function sub_footer(){
+function sub_footer()
+{
   echo '
   <footer class="footer">
          <div class="containerr">
@@ -117,18 +119,19 @@ function sub_footer(){
     </footer>
 
   ';
-  }
-  
+}
 
 
-function headers(){
+
+function headers()
+{
   echo '
   <style>.fa, .far, .fas {
     font-family: "Font Awesome 5 Free";
     font-size: 30px;
 }</style>
   ';
-echo '
+  echo '
 <header>
           <div class="logo">
             <a href="index.php"
@@ -153,17 +156,18 @@ echo '
             </ul>
           </nav>
 </header>
-';  
+';
 }
 
-function sub_headers(){
+function sub_headers()
+{
   echo '
   <style>.fa, .far, .fas {
     font-family: "Font Awesome 5 Free";
     font-size: 30px;
 }</style>
   ';
-echo '
+  echo '
 <header class="navbarclr">
           <div class="logo">
             <a href="index.php?page=Home" class="nav-link" >
@@ -188,16 +192,17 @@ echo '
             </ul>
           </nav>
 </header>
-';  
+';
 }
-function admin_headers(){
+function admin_headers($id, $type)
+{
   echo '
   <style>.fa, .far, .fas {
     font-family: "Font Awesome 5 Free";
     font-size: 30px;
 }</style>
   ';
-echo '
+  echo '
 <header class="navbarclr">
           <div class="logo">
             <a href="index.php?page=Home" class="nav-link" >
@@ -214,33 +219,43 @@ echo '
             <ul class="nav-bar">
               <li><a href="index.php?page=Home">HomePage</a></li>
               <li><a href="index.php?page=products">Products</a></li>
-              <li><a href="index.php?page=orders">ViewCart</a></li>
-              <li><a href=#>managing</a>
+              <li><a href="index.php?page=orders">ViewCart</a></li>';
+  if ($type == 'admin') {
+    echo '
+                <li><a href=#>managing</a>
                 <ul>
                 <li><a href="index.php?page=crudProducts">Products</a></li>
                 <li><a href="index.php?page=crudUsers">Users</a></li>
                 </ul>
-              </li>
-              <li><a href="index.php?page=profile">My Profile</a></li>
-              <li><a href="index.php?page=login">Log In</a></li>
-              <li><a href="index.php?page=logout">Log Out</a></li>
+              </li>';
+  }
+
+  echo '
+              <li><a href="index.php?page=profile">My Profile</a></li>';
+  if (empty($id)) {
+    echo '<li><a href="index.php?page=login">Log In</a></li>';
+  } else {
+    echo '<li><a href="index.php?page=logout">Log Out</a></li>';
+  }
+  echo '       
               <li><a href="index.php?page=login.php">
               <i class="fa fa-user-circle" aria-hidden="true" title="Login to you Account"></i>
               </a></li>
             </ul>
           </nav>
 </header>
-';  
+';
 }
 
-function profileHeader(){
+function profileHeader()
+{
   echo '
   <style>.fa, .far, .fas {
     font-family: "Font Awesome 5 Free";
     font-size: 30px;
 }</style>
   ';
-echo '
+  echo '
           
             <div class="burger">
               <div class="line1"></div>
@@ -255,8 +270,5 @@ echo '
               
             </ul>
           
-';  
+';
 }
-
-
-
