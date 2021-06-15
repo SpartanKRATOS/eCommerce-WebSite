@@ -95,10 +95,11 @@ include 'inc.php/html_body.php';
     <link rel="stylesheet" href="old_css/all.css">
     <script src="https://kit.fontawesome.com/e1af7c97bd.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="crud.css">
-    <link rel="stylesheet" type="text/css" href="header.css">
     <link rel="stylesheet" type="text/css" href="ftr.css">
     <link rel="stylesheet" type="text/css" href="boot.scss">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="header.css">
+
     <script>
         var loadFile = function(event) {
             var output = document.getElementById('output');
@@ -178,7 +179,7 @@ include 'inc.php/html_body.php';
         <div class="row justify-content-center">
             <!-- Button trigger modal -->
 
-            <table class="table" style="width: 80%;">
+            <table class="table table-responsive" style="width: 80%;">
                 <thead class="thead">
                     <tr>
                         <th>Id</th>

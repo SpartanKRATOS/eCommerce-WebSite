@@ -169,7 +169,7 @@ include 'inc.php/html_body.php';
     <div class="row justify-content-center">
         <!-- Button trigger modal -->
 
-        <table class="table" style="width: 80%;">
+        <table class="table table-responsive" style="width: 80%;">
             <thead class="thead">
                 <tr>
                     <th>ID</th>
