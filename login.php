@@ -140,7 +140,7 @@ include 'inc.php/html_body.php';
                             <label class="placehold" for="passwd">Enter your <b>Password</b> <small></small></label>
                             <div class="underline"></div>
                         </div>
-                        </br>
+                        <br>
                         <input type="submit" name="submit" value="Login">
                         <a href="#" class="forgot">Forgot Password</a>
                     </form>
@@ -178,7 +178,7 @@ include 'inc.php/html_body.php';
                             <label class="placehold" for="conf">Confirm your <b>Password</b> <small></small></label>
                             <div class="underline"></div>
                         </div>
-                        </br>
+                        <br>
                         <input type="submit" name="register" value="Register">
                     </form>
                 </div>
