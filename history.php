@@ -104,7 +104,14 @@
                         require 'php/connexion.php';
                         if (isset($_GET['id'])) {
                             $id = $_GET['id'];
-                            $sessionID = $_SESSION['id'];
+                            if (empty($_SESSION['id'])) {
+                                echo 'Please log in!';
+                                header('location: index.php');
+                                exit();
+                            } else {
+                                $sessionID = $_SESSION['id'];
+                            }
+
                             if (isset($_SESSION['id'])) {
                                 echo 'sesssion ID exists';
                             }
