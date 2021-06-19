@@ -28,6 +28,11 @@ input.form-control{
     background-color: rgb(29, 28, 28);
     border-radius: 2.25em;
 }
+#idreadonly{
+    background-color: rgb(29, 28, 28);
+    border-radius: 2.25em;
+}
+
 input.form-control:focus{
     background-color: rgb(29, 28, 28);
 }
@@ -36,4 +41,8 @@ input.form-control:focus{
 }
 h5{
     color: white;
+}
+div.container-fluid{
+    background-color: rgb(29, 28, 28);
+
 }

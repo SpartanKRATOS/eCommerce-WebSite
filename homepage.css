@@ -194,13 +194,38 @@
   
     padding-bottom: 60px;
 }
-.featured h2 {
+.featured h2,.featured h1{
     display: block;
     font-weight: normal;
     margin: 0;
     padding: 40px 0;
-    font-size: 24px;
+    font-size: 29px;
     text-align: center;
     width: 100%;
     border-bottom: 1px solid #eeeeee;
+  }
+  .featured p{
+    display: block;
+    text-align: center;
+    padding: 40px 0;
+  }
+ .buttons {
+    padding: 60px;
+    text-align: center;
+    padding-bottom: 40px;
+  }
+ .buttons a {
+    display: inline-block;
+    text-decoration: none;
+    margin-left: 5px;
+    padding: 12px 20px;
+    border: 0;
+    background: #4e5c70;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+  }
+  .buttons a:hover {
+    background: #434f61;
   }

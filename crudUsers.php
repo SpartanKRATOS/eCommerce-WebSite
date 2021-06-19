@@ -127,7 +127,9 @@ session_start();
         header('location:index.php');
         exit();
     }
-    admin_headers($iddd, $type);
+    $num_items_in_cart = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
+
+    admin_headers($iddd, $type,$num_items_in_cart);
 
     ?>
 
@@ -182,7 +184,15 @@ session_start();
             </div>
         </div>
 
-        </br>
+        
+        <div class="container-fluid">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h3 class="m-0 font-weight-bold " style="text-align: center;">Users</h3>
+            </div>
+        </div>
+        <div class="card-body">
+
         <div style="margin-left: 9%;" class="btn-group" role="group" aria-label="Basic example"><button type="button" style=" border-radius:3.25em;" id="Modal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productModal">
                 ADD
             </button></div>
@@ -261,6 +271,7 @@ session_start();
                 myInput.focus()
             })
         </script>
+    </div>
     </div>
 </body>
 <?php sub_footer(); ?>

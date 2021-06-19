@@ -31,6 +31,8 @@ if (isset($_POST['user_update_btn'])) {
 ?>
 <?php
 include 'inc.php/html_body.php';
+session_start();
+
 ?>
 
 <!DOCTYPE html>
@@ -39,24 +41,43 @@ include 'inc.php/html_body.php';
 <head>
     <meta charset="utf-8">
     <title>Profile</title>
+    <link rel="stylesheet" type="text/css" href="crud.css">
+
     <link rel="stylesheet" type="text/css" href="header.css">
     <link rel="stylesheet" type="text/css" href="ftr.css">
     <link rel="stylesheet" type="text/css" href="boot.scss">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/e1af7c97bd.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="old_css/all.css">
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
     
 </head>
 
 <body>
-<?php admin_headers(); ?>
+<?php
+    $iddd = $_SESSION['id'];
+    $type = $_SESSION['type'];
+    if (empty($iddd)) {
+        header('location:index.php');
+        exit();
+    }
+    if ($type != 'admin') {
+        header('location:index.php');
+        exit();
+    }
+    $num_items_in_cart = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
+
+    admin_headers($iddd, $type,$num_items_in_cart);
+
+    ?>
 
 
 
     <div class="container-fluid">
-        <div class="card shadow mb-4">
+    <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">User Edit</h6>
+                <h3 class="m-0 font-weight-bold " style="text-align: center;">Edit User</h3>
             </div>
         </div>
         <div class="card-body">
@@ -82,7 +103,7 @@ include 'inc.php/html_body.php';
                         </div>
                         <div class="form-group">
                             <label>Id</label>
-                            <input type="text" name="id" class="form-control" readonly placeholder="id" value="<?php echo $row['id'] ?>">
+                            <input type="text" id = "idreadonly" name="id" class="form-control" readonly placeholder="id" value="<?php echo $row['id'] ?>">
                         </div>
                         <div class="form-group">
                             <label>Firstname</label>

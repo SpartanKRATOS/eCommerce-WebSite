@@ -159,7 +159,7 @@ function headers()
 ';
 }
 
-function sub_headers()
+function sub_headers($num_items_in_cart)
 {
   echo '
   <style>.fa, .far, .fas {
@@ -184,17 +184,22 @@ function sub_headers()
             <ul class="nav-bar">
               <li><a href="index.php?page=Home">HomePage</a></li>
               <li><a href="index.php?page=products">Products</a></li>
-              <li><a href="index.php?page=orders">ViewCart</a></li>
-              <li><a href="index.php?page=profile">My Profile</a></li>
               <li><a href="index.php?page=login">
-              <i class="fa fa-user-circle" aria-hidden="true" title="Login to you Account"></i>
-              </a></li>
+              Login
+              </a></li>';
+              echo '     
+        <div class="link-icons">
+          <a href="index.php?page=cart">
+          <i class="fas fa-shopping-cart"></i>';
+    echo '<span>' .$num_items_in_cart.   ' </span>
+          </a>
+        </div>
             </ul>
           </nav>
 </header>
 ';
 }
-function sub_headers1($id)
+function sub_headers1($id, $type,$num_items_in_cart)
 {
   echo '
   <style>.fa, .far, .fas {
@@ -219,7 +224,6 @@ function sub_headers1($id)
             <ul class="nav-bar">
               <li><a href="index.php?page=Home">HomePage</a></li>
               <li><a href="index.php?page=products">Products</a></li>
-              <li><a href="index.php?page=orders">ViewCart</a></li>
               <li><a href="index.php?page=profile">My Profile</a></li>';
 
   if (empty($id)) {
@@ -227,16 +231,19 @@ function sub_headers1($id)
   } else {
     echo '<li><a href="index.php?page=logout">Log Out</a></li>';
   }
-  echo '       
-              <li><a href="index.php?page=login.php">
-              <i class="fa fa-user-circle" aria-hidden="true" title="Login to you Account"></i>
-              </a></li>
+      echo '     
+      <div class="link-icons">
+        <a href="index.php?page=cart">
+        <i class="fas fa-shopping-cart"></i>';
+      echo '<span>' .$num_items_in_cart.   ' </span>
+        </a>
+      </div>
             </ul>
           </nav>
 </header>
 ';
 }
-function admin_headers($id, $type)
+function admin_headers($id, $type,$num_items_in_cart)
 {
   echo '
   <style>.fa, .far, .fas {
@@ -260,8 +267,7 @@ function admin_headers($id, $type)
             </div>
             <ul class="nav-bar">
               <li><a href="index.php?page=Home">HomePage</a></li>
-              <li><a href="index.php?page=products">Products</a></li>
-              <li><a href="index.php?page=orders">ViewCart</a></li>';
+              <li><a href="index.php?page=products">Products</a></li>';
   if ($type == 'admin') {
     echo '
                 <li><a href=#>managing</a>
@@ -279,12 +285,17 @@ function admin_headers($id, $type)
   } else {
     echo '<li><a href="index.php?page=logout">Log Out</a></li>';
   }
-  echo '       
-              <li><a href="index.php?page=login.php">
-              <i class="fa fa-user-circle" aria-hidden="true" title="Login to you Account"></i>
-              </a></li>
-            </ul>
+  
+  echo '     
+        <div class="link-icons">
+          <a href="index.php?page=cart">
+          <i class="fas fa-shopping-cart"></i>';
+    echo '<span>' .$num_items_in_cart.   ' </span>
+          </a>
+        </div></ul>
           </nav>
+                 
+
 </header>
 ';
 }

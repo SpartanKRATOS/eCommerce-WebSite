@@ -37,52 +37,55 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 // Get the total number of products
 $total_products = $pdo->query('SELECT * FROM products')->rowCount();
 ?>
+<?php
+include 'inc.php/html_body.php';
 
+if (isset($_SESSION['id']) || isset($_SESSION['type'])){
+    $iddd = $_SESSION['id'];
+    $type = $_SESSION['type'];
+    $num_items_in_cart = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
+  
+  }else{
+    $iddd = "";
+    $type = "";
+  
+  }
+?>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
 		<title>Products</title>
-		<link href="css/cart.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="old_css/all.css">
+
+        <link rel="stylesheet" type="text/css" href="homepage.css">
+        <link rel="stylesheet" type="text/css" href="header.css">
+        <link rel="stylesheet" type="text/css" href="ftr.css">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+        <script src="https://kit.fontawesome.com/e1af7c97bd.js" crossorigin="anonymous"></script>
+
 	</head>
 	<body>
-        <header>
-            <div class="content-wrapper">
-                <h1>Gaming Shop</h1>
-                <nav>
-                    <a href="index.php">Home</a>
-                    <a href="index.php?page=products">Products</a>
-                    <a href="index.php?page=profile">Profile</a>
-                    <?php 
-                    if($username==''){ ?>
-                        <a href="index.php?page=login">Login</a> 
-                        <?php
-                     }else{
- 
-                     if($_SESSION[$username] == "ok"){
-                        ?>
-                        <a href="index.php?page=logout">Logout</a>
-                        <?php
-                     }else{
-                       
-                     }}
-                     ?>
-                </nav>
-                <div class="link-icons">
-                    <a href="index.php?page=cart">
-						<i class="fas fa-shopping-cart"></i>
-            <?php   $num_items_in_cart = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0; ?>
-                        <span><?= $num_items_in_cart ?></span>
-					</a>
-                </div>
-            </div>
-        </header>
+    <?php
+    //$iddd = $_SESSION['id'];
+    //$type = $_SESSION['type'];
+    if (empty($iddd)) {
+      $num_items_in_cart = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
+
+        sub_headers($num_items_in_cart);
+    }else
+    if ($type != 'admin') {
+        sub_headers1($iddd, $type,$num_items_in_cart);
+    }else{admin_headers($iddd, $type,$num_items_in_cart);}
+    
+
+    ?>
+
         <main>
-<div class="products content-wrapper">
+<section class="featured section " id="featured">
     <h1>Products</h1>
     <p><?=$total_products?> Products</p>
-    <div class="products-wrapper">
+    <div class="featured__container bd-grid">
         <?php foreach ($products as $product): ?>
         <a href="index.php?page=product&id=<?=$product['id']?>" class="product">
             <img src="images/<?=$product['img']?>" width="200" height="200" alt="<?=$product['name']?>">
@@ -104,6 +107,8 @@ $total_products = $pdo->query('SELECT * FROM products')->rowCount();
         <a href="index.php?page=products&p=<?=$current_page+1?>">Next</a>
         <?php endif; ?>
     </div>
-</div>
-
-<?=template_footer()?>
+</section>
+</main>
+</body>
+<?php sub_footer(); ?>
+</html>

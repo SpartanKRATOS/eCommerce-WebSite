@@ -129,6 +129,7 @@ nav ul ul{
   border-top: 3px solid #ffd89b;
   opacity: 0;
   visibility: hidden;
+  z-index: 10000;
 }
 nav ul li:hover > ul{
   top: 60px;
@@ -145,6 +146,39 @@ nav ul ul li{
   border-top: none;
 
 
+}
+  .link-icons {
+  display: flex;
+  flex-basis: 0;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+}
+.link-icons a {
+  text-decoration: none;
+  color: #48515e;
+  padding: 0 10px;
+}
+ .link-icons a:hover {
+  color: #4e5c70;
+}
+ .link-icons a i {
+  font-size: 18px;
+}
+ .link-icons a span {
+  display: inline-block;
+  text-align: center;
+  background-color: #63748e;
+  border-radius: 50%;
+  color: #ffffff;
+  font-size: 12px;
+  line-height: 16px;
+  width: 16px;
+  height: 16px;
+  font-weight: bold;
+  position: absolute;
+  bottom: 29px;
+  right: 0;
 }
 
 nav ul ul li a{

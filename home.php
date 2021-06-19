@@ -37,9 +37,18 @@ $popular_products = $stmt1->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <?php
 include 'inc.php/html_body.php';
+if (isset($_SESSION['id']) || isset($_SESSION['type'])){
+  $iddd = $_SESSION['id'];
+  $type = $_SESSION['type'];
+  $num_items_in_cart = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
 
-    $iddd = $_SESSION['id'];
-    $type = $_SESSION['type'];
+}else{
+  $iddd = "";
+  $type = "";
+
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,11 +73,13 @@ include 'inc.php/html_body.php';
     //$iddd = $_SESSION['id'];
     //$type = $_SESSION['type'];
     if (empty($iddd)) {
-        sub_headers();
+      $num_items_in_cart = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
+
+        sub_headers($num_items_in_cart);
     }else
     if ($type != 'admin') {
-        sub_headers1($iddd);
-    }else{admin_headers($iddd, $type);}
+        sub_headers1($iddd, $type,$num_items_in_cart);
+    }else{admin_headers($iddd, $type,$num_items_in_cart);}
     
 
     ?>

@@ -98,6 +98,8 @@ if (isset($_POST['register'])) {
 
 <?php
 include 'inc.php/html_body.php';
+$num_items_in_cart = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -115,7 +117,7 @@ include 'inc.php/html_body.php';
 </head>
 
 <body>
-    <?php sub_headers(); ?>
+    <?php sub_headers($num_items_in_cart); ?>
     <div class="all">
         <div class="container">
             <div class="blueBg">
