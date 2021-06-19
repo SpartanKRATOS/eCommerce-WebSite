@@ -186,6 +186,48 @@ function sub_headers()
               <li><a href="index.php?page=products">Products</a></li>
               <li><a href="index.php?page=orders">ViewCart</a></li>
               <li><a href="index.php?page=profile">My Profile</a></li>
+              <li><a href="index.php?page=login">
+              <i class="fa fa-user-circle" aria-hidden="true" title="Login to you Account"></i>
+              </a></li>
+            </ul>
+          </nav>
+</header>
+';
+}
+function sub_headers1($id)
+{
+  echo '
+  <style>.fa, .far, .fas {
+    font-family: "Font Awesome 5 Free";
+    font-size: 30px;
+}</style>
+  ';
+  echo '
+<header class="navbarclr">
+          <div class="logo">
+            <a href="index.php?page=Home" class="nav-link" >
+              <span class="link-text logo-text">GameStart</span>
+              <i class="fad fa-dragon"></i>
+            </a>
+          </div>
+          <nav>
+            <div class="burger">
+              <div class="line1"></div>
+              <div class="line2"></div>
+              <div class="line3"></div>
+            </div>
+            <ul class="nav-bar">
+              <li><a href="index.php?page=Home">HomePage</a></li>
+              <li><a href="index.php?page=products">Products</a></li>
+              <li><a href="index.php?page=orders">ViewCart</a></li>
+              <li><a href="index.php?page=profile">My Profile</a></li>';
+
+  if (empty($id)) {
+    echo '<li><a href="index.php?page=login">Log In</a></li>';
+  } else {
+    echo '<li><a href="index.php?page=logout">Log Out</a></li>';
+  }
+  echo '       
               <li><a href="index.php?page=login.php">
               <i class="fa fa-user-circle" aria-hidden="true" title="Login to you Account"></i>
               </a></li>
