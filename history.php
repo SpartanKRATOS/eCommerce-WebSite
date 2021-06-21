@@ -112,7 +112,7 @@ session_start();
                                 if (isset($_SESSION['id'])) {
                                     //echo 'sesssion ID exists';
                                 }
-                                $checkDB = "SELECT * FROM history where user_id='$sessionID';";
+                                $checkDB = "SELECT * FROM history where user_id='$id';";
                                 $result = mysqli_query($connect, $checkDB);
                                 $resultCheck = mysqli_num_rows($result);
                                 if ($resultCheck > 0) {
