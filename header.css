@@ -291,6 +291,8 @@ article {
 
   }
   nav {
+    z-index: 100000;
+    margin-top:60px ;
     width: 100%;
   }
   .nav-bar {
@@ -340,6 +342,7 @@ article {
     opacity: 0;
   }
   .nav-active {
+    z-index: 100000;
     transition: transform 0.5s ease-in;
     transform: translateX(0);
   }
