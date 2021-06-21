@@ -161,7 +161,7 @@
     background-color: rgb(223, 219, 219);
     border-radius: .5rem;
     transition: .3s;
-    filter: drop-shadow(5px 10px 4px rgb(43, 42, 42));
+    filter: drop-shadow(1px 1px 4px rgb(43, 42, 42));
 }
 .product:hover{
     transform: translateY(-.5rem);
