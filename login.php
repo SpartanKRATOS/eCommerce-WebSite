@@ -89,7 +89,7 @@ if (isset($_POST['register'])) {
         //// hena assa7ebi checki wache dazte query and ssifetou l LOGIN PAGE
         session_start();
         $_SESSION[$usrname] = "ok";
-        header("location:php/profile.php");
+        header("Location: index.php?page=profile");
     }
     // nous avons fermé la connexion à DB
     mysqli_close($connect);

@@ -20,7 +20,7 @@ if (isset($_POST['user_update_btn'])) {
         $edit_img = $_FILES["uploadedfile"]["name"];
     }
 
-    $query = " UPDATE users SET `fname`='$edit_firstname', `lname`='$edit_lastname', `login`='$edit_login', `password`='$edit_password', `type`='$edit_type', `imag`='$edit_img', `date`=current_timestamp() WHERE `id`='$edit_id'";
+    $query = " UPDATE users SET `fname`='$edit_firstname', `lname`='$edit_lastname', `login`='$edit_login', `password`='$edit_password', `type`='$edit_type', `image`='$edit_img', `date`=current_timestamp() WHERE `id`='$edit_id'";
     $query_run = mysqli_query($connect, $query);
 
     if ($query_run) {
