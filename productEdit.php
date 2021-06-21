@@ -30,7 +30,7 @@ if (isset($_POST['product_update_btn'])) {
 }
 
 ?>
- <?php
+<?php
 include 'inc.php/html_body.php';
 session_start();
 
@@ -47,15 +47,15 @@ session_start();
     <link rel="stylesheet" type="text/css" href="header.css">
     <link rel="stylesheet" type="text/css" href="ftr.css">
     <link rel="stylesheet" type="text/css" href="boot.scss">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-        <script src="https://kit.fontawesome.com/e1af7c97bd.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="old_css/all.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/e1af7c97bd.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="old_css/all.css">
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 </head>
 
 <body>
-<?php
+    <?php
     $iddd = $_SESSION['id'];
     $type = $_SESSION['type'];
     if (empty($iddd)) {
@@ -68,13 +68,13 @@ session_start();
     }
     $num_items_in_cart = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
 
-    admin_headers($iddd, $type,$num_items_in_cart);
+    admin_headers($iddd, $type, $num_items_in_cart);
 
     ?>
 
 
     <div class="container-fluid">
-    <div class="card shadow mb-4">
+        <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <h3 class="m-0 font-weight-bold " style="text-align: center;">Edit Product</h3>
             </div>
@@ -93,7 +93,7 @@ session_start();
                     <form method="POST" enctype="multipart/form-data" autocomplete="off">
                         <div class="form-group">
                             <label>ID</label>
-                            <input type="text"  id = "idreadonly" name="id" class="form-control" readonly placeholder="Type a name" value="<?php echo $row['id'] ?>">
+                            <input type="text" id="idreadonly" name="id" class="form-control" readonly placeholder="Type a name" value="<?php echo $row['id'] ?>">
                         </div>
                         <div class="form-group">
                             <label>Name</label>
@@ -140,6 +140,7 @@ session_start();
         </div>
     </div>
 
+    <script src="js/slideNav.js"></script>
 
 </body>
 <?php sub_footer(); ?>

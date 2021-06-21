@@ -89,15 +89,13 @@ if ($products_in_cart) {
 ?>
 <?php
 include 'inc.php/html_body.php';
-if (isset($_SESSION['id']) || isset($_SESSION['type'])){
-  $iddd = $_SESSION['id'];
-  $type = $_SESSION['type'];
-  $num_items_in_cart = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
-
-}else{
-  $iddd = "";
-  $type = "";
-
+if (isset($_SESSION['id']) || isset($_SESSION['type'])) {
+    $iddd = $_SESSION['id'];
+    $type = $_SESSION['type'];
+    $num_items_in_cart = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
+} else {
+    $iddd = "";
+    $type = "";
 }
 
 
@@ -117,18 +115,20 @@ if (isset($_SESSION['id']) || isset($_SESSION['type'])){
 </head>
 
 <body>
-<?php
+    <?php
     //$iddd = $_SESSION['id'];
     //$type = $_SESSION['type'];
     if (empty($iddd)) {
-      $num_items_in_cart = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
+        $num_items_in_cart = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
 
         sub_headers($num_items_in_cart);
-    }else
+    } else
     if ($type != 'admin') {
-        sub_headers1($iddd, $type,$num_items_in_cart);
-    }else{admin_headers($iddd, $type,$num_items_in_cart);}
-    
+        sub_headers1($iddd, $type, $num_items_in_cart);
+    } else {
+        admin_headers($iddd, $type, $num_items_in_cart);
+    }
+
 
     ?>
     <main>
@@ -182,7 +182,8 @@ if (isset($_SESSION['id']) || isset($_SESSION['type'])){
                 </div>
             </form>
         </div>
-        </main>
+    </main>
+    <script src="js/slideNav.js"></script>
 </body>
 <?php sub_footer(); ?>
 

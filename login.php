@@ -204,6 +204,8 @@ $num_items_in_cart = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
             body.classList.remove('active')
         }
     </script>
+    <script src="js/slideNav.js"></script>
+
 </body>
 <?php sub_footer(); ?>
 

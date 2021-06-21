@@ -187,11 +187,11 @@ function sub_headers($num_items_in_cart)
               <li><a href="index.php?page=login">
               Login
               </a></li>';
-              echo '     
+  echo '     
         <div class="link-icons">
           <a href="index.php?page=cart">
           <i class="fas fa-shopping-cart"></i>';
-    echo '<span>' .$num_items_in_cart.   ' </span>
+  echo '<span>' . $num_items_in_cart .   ' </span>
           </a>
         </div>
             </ul>
@@ -199,7 +199,7 @@ function sub_headers($num_items_in_cart)
 </header>
 ';
 }
-function sub_headers1($id, $type,$num_items_in_cart)
+function sub_headers1($id, $type, $num_items_in_cart)
 {
   echo '
   <style>.fa, .far, .fas {
@@ -231,11 +231,11 @@ function sub_headers1($id, $type,$num_items_in_cart)
   } else {
     echo '<li><a href="index.php?page=logout">Log Out</a></li>';
   }
-      echo '     
+  echo '     
       <div class="link-icons">
         <a href="index.php?page=cart">
         <i class="fas fa-shopping-cart"></i>';
-      echo '<span>' .$num_items_in_cart.   ' </span>
+  echo '<span>' . $num_items_in_cart .   ' </span>
         </a>
       </div>
             </ul>
@@ -243,7 +243,7 @@ function sub_headers1($id, $type,$num_items_in_cart)
 </header>
 ';
 }
-function admin_headers($id, $type,$num_items_in_cart)
+function admin_headers($id, $type, $num_items_in_cart)
 {
   echo '
   <style>.fa, .far, .fas {
@@ -285,12 +285,12 @@ function admin_headers($id, $type,$num_items_in_cart)
   } else {
     echo '<li><a href="index.php?page=logout">Log Out</a></li>';
   }
-  
+
   echo '     
         <div class="link-icons">
           <a href="index.php?page=cart">
           <i class="fas fa-shopping-cart"></i>';
-    echo '<span>' .$num_items_in_cart.   ' </span>
+  echo '<span>' . $num_items_in_cart .   ' </span>
           </a>
         </div></ul>
           </nav>

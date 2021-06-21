@@ -120,7 +120,7 @@ session_start();
     }
     $num_items_in_cart = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
 
-    admin_headers($iddd, $type,$num_items_in_cart);
+    admin_headers($iddd, $type, $num_items_in_cart);
 
     ?>
 
@@ -180,86 +180,88 @@ session_start();
         </div>
 
         <div class="container-fluid">
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h3 class="m-0 font-weight-bold " style="text-align: center;">Products</h3>
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h3 class="m-0 font-weight-bold " style="text-align: center;">Products</h3>
+                </div>
+            </div>
+            <div class="card-body">
+                <div style="margin-left: 9%;" class="btn-group" role="group" aria-label="Basic example"><button type="button" id="Modal" style=" border-radius:3.25em;" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productModal">
+                        ADD
+                    </button></div>
+                <div class="row justify-content-center">
+                    <!-- Button trigger modal -->
+
+                    <table class="table table-responsive" style="width: 80%;">
+                        <thead class="thead">
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Price</th>
+                                <th>RRP</th>
+                                <th>Quantity</th>
+                                <th>Image</th>
+                                <th>date_added</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <?php
+
+                            require 'php/connexion.php';
+
+                            $checkDB = "SELECT * FROM products;";
+                            $result = mysqli_query($connect, $checkDB);
+                            $resultCheck = mysqli_num_rows($result);
+                            if ($resultCheck > 0) {
+                                while ($row = mysqli_fetch_assoc($result)) {
+                            ?>
+                                    <tr>
+                                        <td> <?php echo $row['id'] ?> </td>
+                                        <td> <?php echo $row['name'] ?> </td>
+                                        <td> <?php echo $row['desc'] ?> </td>
+                                        <td> <?php echo $row['price'] ?> </td>
+                                        <td> <?php echo $row['rrp'] ?> </td>
+                                        <td> <?php echo $row['quantity'] ?> </td>
+                                        <td> <img src="<?php echo 'images/', $row['img'] ?>" height="100px" width="100px" alt="Image"> </td>
+                                        <td> <?php echo $row['date_added'] ?> </td>
+                                        <td>
+                                            <form action="index.php?page=productEdit" method="POST">
+                                                <input type="hidden" name="edit_id" value="<?php echo $row['id'] ?>">
+                                                <button type="submit" style=" border-radius:3.25em;" class="btn btn-success" name="edit_data_btn"> Edit </button>
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <form method="POST">
+                                                <input type="hidden" name="delete_id" value="<?php echo $row['id'] ?>">
+                                                <button type="submit" style=" border-radius:3.25em;" class="btn btn-danger" name="delete_data_btn" onclick=" return confirm('Are you sure?');"> Delete </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                            <?php
+
+                                }
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+
+                <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+                <script>
+                    var myModal = document.getElementById('Modal')
+                    var myInput = document.getElementById('exampleModal')
+
+                    myModal.addEventListener('shown.bs.modal', function() {
+                        myInput.focus()
+                    })
+                </script>
             </div>
         </div>
-        <div class="card-body">
-        <div style="margin-left: 9%;" class="btn-group" role="group" aria-label="Basic example"><button type="button" id="Modal" style=" border-radius:3.25em;" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productModal">
-                ADD
-            </button></div>
-        <div class="row justify-content-center">
-            <!-- Button trigger modal -->
+        <script src="js/slideNav.js"></script>
 
-            <table class="table table-responsive" style="width: 80%;">
-                <thead class="thead">
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Price</th>
-                        <th>RRP</th>
-                        <th>Quantity</th>
-                        <th>Image</th>
-                        <th>date_added</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <?php
-
-                    require 'php/connexion.php';
-
-                    $checkDB = "SELECT * FROM products;";
-                    $result = mysqli_query($connect, $checkDB);
-                    $resultCheck = mysqli_num_rows($result);
-                    if ($resultCheck > 0) {
-                        while ($row = mysqli_fetch_assoc($result)) {
-                    ?>
-                            <tr>
-                                <td> <?php echo $row['id'] ?> </td>
-                                <td> <?php echo $row['name'] ?> </td>
-                                <td> <?php echo $row['desc'] ?> </td>
-                                <td> <?php echo $row['price'] ?> </td>
-                                <td> <?php echo $row['rrp'] ?> </td>
-                                <td> <?php echo $row['quantity'] ?> </td>
-                                <td> <img src="<?php echo 'images/', $row['img'] ?>" height="100px" width="100px" alt="Image"> </td>
-                                <td> <?php echo $row['date_added'] ?> </td>
-                                <td>
-                                    <form action="index.php?page=productEdit" method="POST">
-                                        <input type="hidden" name="edit_id" value="<?php echo $row['id'] ?>">
-                                        <button type="submit" style=" border-radius:3.25em;" class="btn btn-success" name="edit_data_btn"> Edit </button>
-                                    </form>
-                                </td>
-                                <td>
-                                    <form method="POST">
-                                        <input type="hidden" name="delete_id" value="<?php echo $row['id'] ?>">
-                                        <button type="submit" style=" border-radius:3.25em;" class="btn btn-danger" name="delete_data_btn" onclick=" return confirm('Are you sure?');"> Delete </button>
-                                    </form>
-                                </td>
-                            </tr>
-                    <?php
-
-                        }
-                    }
-                    ?>
-                </tbody>
-            </table>
-        </div>
-
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-        <script>
-            var myModal = document.getElementById('Modal')
-            var myInput = document.getElementById('exampleModal')
-
-            myModal.addEventListener('shown.bs.modal', function() {
-                myInput.focus()
-            })
-        </script>
-    </div>
-    </div>
 </body>
 <?php sub_footer(); ?>
 
