@@ -229,3 +229,22 @@
   .buttons a:hover {
     background: #434f61;
   }
+
+main .placeorder h1 {
+  display: block;
+  font-weight: normal;
+  margin: 0;
+  padding: 40px 0;
+  font-size: 24px;
+  text-align: center;
+  width: 100%;
+}
+main .placeorder p {
+  text-align: center;
+}
+.content-wrapper {
+  display: flexbox;
+  width: 1050px;
+  margin: auto;
+  margin-bottom: 90px;
+}
