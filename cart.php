@@ -1,4 +1,5 @@
 <?php
+require "php/connexion.php";
 
 session_start();
 
@@ -61,6 +62,38 @@ if (isset($_POST['update']) && isset($_SESSION['cart'])) {
 
 // Send the user to the place order page if they click the Place Order button, also the cart should not be empty
 if (isset($_POST['placeorder']) && isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
+    $products_in_cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
+    $products = array();
+    $subtotal = 0.00;
+// If there are products in cart
+if ($products_in_cart) {
+    // There are products in the cart so we need to select those products from the database
+    // Products in cart array to question mark string array, we need the SQL statement to include IN (?,?,?,...etc)
+    $array_to_question_marks = implode(',', array_fill(0, count($products_in_cart), '?'));
+    $stmt = $pdo->prepare('SELECT * FROM products WHERE id IN (' . $array_to_question_marks . ')');
+    // We only need the array keys, not the values, the keys are the id's of the products
+    $stmt->execute(array_keys($products_in_cart));
+    // Fetch the products from the database and return the result as an Array
+    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    // Calculate the subtotal
+    $userID = $_SESSION['id'];
+    foreach ($products as $product) {
+        $subtotal += (float)$product['price'] * (int)$products_in_cart[$product['id']];
+        $quantit=(int)$products_in_cart[$product['id']];
+        $name.=' <li>- '.$product['name'].' - quantité : '.$quantit.'</li>';
+        $quantitTotal+=$quantit;
+    }
+    foreach ($products as $product) {
+
+        
+
+    }
+        $checkDBUsername = "INSERT INTO orders ( user_id, qutt, descri,total, dattime) VALUES ('$userID', '$quantitTotal' , '<ul>$name</ul>' ,'$subtotal',current_timestamp()); ";
+    $result = mysqli_query($connect, $checkDBUsername);
+    
+
+}
+
     unset($_SESSION['cart']);
     $_SESSION['cart'] = array();
     header('Location: index.php?page=placeorder');
@@ -140,8 +173,8 @@ if (isset($_SESSION['id']) || isset($_SESSION['type'])) {
                         <tr>
                             <td colspan="2">Product</td>
                             <td>Price</td>
-                            <td>Quantity</td>
-                            <td>Total</td>
+                            <td>Total Quantity</td>
+                            <td>Total Price</td>
                         </tr>
                     </thead>
                     <tbody>

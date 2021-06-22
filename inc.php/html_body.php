@@ -274,6 +274,7 @@ function admin_headers($id, $type, $num_items_in_cart)
                 <ul>
                 <li><a href="index.php?page=crudProducts">Products</a></li>
                 <li><a href="index.php?page=crudUsers">Users</a></li>
+                <li><a href="index.php?page=orders">Orders</a></li>
                 </ul>
               </li>';
   }
